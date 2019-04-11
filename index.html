@@ -1,48 +1,40 @@
-doctype
-css reset
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 600, 700, 800" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Check Yo-Self</title>
+    <meta name="description" content="Check Yo'Self - A To Do List Application">
+    <meta name="Katherine A. Williams" content="Check Yo'Self">
+    <link rel="stylesheet" href="styles.css" type"text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100, 200, 300, 400, 600, 700, 800" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
-<body>
-    <section class="sidebar">
-        <h1 class="sidebar__header sidebar__border">IdeaBox Redux</h1>
-        <form class="sidebar__form1 sidebar__child sidebar__border">
-            <label for="sidebar__form1--starred label">Filter Starred Ideas</label>
-            <button class="sidebar__form1--button sidebar--button" type="button">Show Starred Ideas</button>
-        </form>
-        <h2 class="label sidebar__border">Filter by Quality</h2>
-        <article class="sidebar__list sidebar__child">
-            <p class="sidebar__list--swill item">Swill</p>
-            <p class="sidebar__list--plausible item">Plausible</p>
-            <p class="sidebar__list--genius item">Genius</p>
-        </article>
-        <form class="sidebar__form2 sidebar__child sidebar__border">
-            <label class="sidebar__form2--quality label" for="new-quality">New Quality</label>
-            <input class="sidebar__form2--input" type="text" name="new-quality" id="new-quality--input" />
-            <button class="sidebar__form2--button sidebar--button" type="button">Add New Quality</button>
-        </form>
-    </section>
-    <section class="creator">
-        <form class="creator__form">
-            <label class="creator__form--title label" for="title">Title</label>
-            <input class="creator__form--title--input input" type="text" name="title" id="title" />
-            <label class="creator__form--body label" for="body">Body</label>
-            <textarea class="creator__form--body--input input" type="text" name="body" id="body"></textarea>
-            <button class="creator__form--button" type="button">Save</button>
-        </form>
-        <input class="creator__search" type="text" id="searchbar" placeholder="Search ideas">
-    </section>
-    <section class="ideas">
-        <p class="card__ideaprompt">Create an Idea!</p>
-    </section>
-</body>
-<script src="./ideas.js"></script>
-<script src="./main.js"></script>
-
+    <body>
+        <nav>
+            <h1>Check Yo'Self</h1>
+            <input type="text" placeholder="Search">
+        </nav>
+        <main>
+            <aside>
+                <form class="">
+                    <label for="">ToDo Title</label>
+                    <input type="text">
+                    <label for="">ToDo Title</label>
+                    <input type="text">
+                </form>
+                <form>
+                    <button class="" type="button">Make Task List</button>
+                    <button class="" type="button">Clear All</button>
+                </form>
+                <form>
+                    <button class="" type="button">Filter by Urgency</button>
+                </form>
+            </aside>
+        </main>
+        <section class="">
+            <p class="">Create a List!</p>
+        </section>
+    </body>
+    <script src="./ideas.js"></script>
+    <script src="./main.js"></script>
 </html>
