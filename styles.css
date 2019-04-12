@@ -99,7 +99,7 @@ header input {
     height: 40px;
     width: 270px;
     padding-left: 30px;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 400;
     margin-right: 12px;
     border-radius: 2px;
@@ -177,11 +177,6 @@ section {
     width: 300px;
 }
 
-.note--regular input,
-.note--urgent input {
-    padding-left: 5px;
-}
-
 .note--regular h2,
 .note--urgent h2 {
     font-weight: 700;
@@ -204,4 +199,17 @@ section {
 .note--urgent {
     background-color: #FEE89E;
     border: 2px solid #FEC40E;
+}
+
+.note__bottom--regular,
+.note__bottom--urgent {
+    height: 30px;
+}
+
+.note__bottom--regular {
+    border-top: 2px solid #C7D3D8;
+}
+
+.note__bottom--urgent {
+    border-top: 2px solid #FEC40E;
 }
