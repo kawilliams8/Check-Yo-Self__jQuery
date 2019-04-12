@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>CHECK YO' SELF</title>
-    <meta name="description" content="Check Yo' Self - A To Do List Application">
-    <meta name="author" content="Katherine A. Williams"
+    <meta id="description" content="Check Yo' Self - A To Do List Application">
+    <meta name="author" content="Katherine A. Williams">
     <meta name="keywords" content="HTML, CSS, Javascript">
     <link rel="stylesheet" href="styles.css" type"text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,
@@ -21,6 +21,7 @@
                 <form class="sidebar__form1">
                     <label class="sidebar__form1" for="">Task Title</label>
                     <input class="sidebar__form1" type="text">
+                    <div>**Task list goes here**</div>
                     <label class="sidebar__form1" for="">Task Item</label>
                     <input class="sidebar__form1" type="text">
                     <button class="sidebar__form1" type="button">Make Task List</button>
@@ -32,7 +33,31 @@
             </aside>
         </main>
         <section class="fridge">
-            <p class="fridge">Create a List!</p>
+            <h2>Create a List!</h2>
+            <div class="note--urgent">
+                <h2>Task Title</h2>
+                <input type="checkbox">
+                <p>Don't ever play yourself.</p>
+                <input type="checkbox">
+                <p>Every chance I get, I water the plants.</p>
+                <input type="checkbox">
+                <p>Lion! Cloth talk.</p>
+            </div>
+            <div class="note--regular">
+                <h2>Task Title</h2>
+                <input type="checkbox">
+                <p>Don't ever play yourself.</p>
+                <input type="checkbox">
+                <p>Every chance I get, I water the plants.</p>
+                <input type="checkbox">
+                <p>Lion! Cloth talk.</p>
+                <input type="checkbox">
+                <p>Lorem Khaled Ipsum is a major key to success.</p>
+                <input type="checkbox">
+                <p>Congratulations, you played yourself.</p>
+                <input type="checkbox">
+                <p>Another one.</p>
+            </div>
         </section>
     </body>
     <script src="./todo-list.js"></script>

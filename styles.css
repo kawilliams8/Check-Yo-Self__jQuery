@@ -18,6 +18,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -31,17 +32,21 @@ header, {
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -97,7 +102,7 @@ header input {
     font-size: 12px;
     font-weight: 400;
     margin-right: 12px;
-    border-radius: 3px;
+    border-radius: 2px;
     border: none;
     color: #fff;
 }
@@ -130,14 +135,18 @@ button {
     width: 90%;
     height: 38px;
     border: 2px solid #1F1f3D;
-    border-radius: 3px;
+    border-radius: 2px;
     padding: 0;
+    font-size: 16px;
+}
+
+aside input {
+    padding-left: 5px;
 }
 
 aside button {
     background: #1F1f3D;
     color: #fff;
-    font-size: 16px;
     font-weight: 700;
     letter-spacing: .75px;
 }
@@ -159,4 +168,40 @@ aside .urgent {
 section {
     grid-area: fridge;
     background-color: #F4F7F8;
+}
+
+.note--regular,
+.note--urgent {
+    color: #1F1F3D;
+    margin: 30px;
+    width: 300px;
+}
+
+.note--regular input,
+.note--urgent input {
+    padding-left: 5px;
+}
+
+.note--regular h2,
+.note--urgent h2 {
+    font-weight: 700;
+    padding: 10px;
+}
+
+.note--regular h2 {
+    border-bottom: 2px solid #C7D3D8;
+}
+
+.note--urgent h2 {
+    border-bottom: 2px solid #FEC40E;
+}
+
+.note--regular {
+    background-color: #FBFDFF;
+    border: 2px solid #C7D3D8;
+}
+
+.note--urgent {
+    background-color: #FEE89E;
+    border: 2px solid #FEC40E;
 }
