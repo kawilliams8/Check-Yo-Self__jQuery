@@ -1,10 +1,11 @@
 //Global variables
 titleInput = document.querySelector(".sidebar__form1-title");
+sidebarItemList = document.querySelector(".sidebar__task-list")
 itemInput = document.querySelector(".sidebar__form1-item");
+sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
 clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form1-filter")
-sidebarItemList = document.querySelector(".sidebar__tasklist-item");
 fridge = document.querySelector(".fridge");
 var taskCollection = [];
 
@@ -12,7 +13,8 @@ var taskCollection = [];
 window.addEventListener('load', loadPage);
 titleInput.addEventListener('keyup', enableMakeListButton);
 itemInput.addEventListener('keyup', enableMakeListButton);
-makeListButton.addEventListener('click', addSidebarTask);
+sidebarTaskAdd.addEventListener('click', addSidebarTask);
+makeListButton.addEventListener('click', displayNotes);
 
 //Function declarations
 function loadPage() {
@@ -61,8 +63,6 @@ function addSidebarTask() {
   clearTaskInput();
 }
 
-
-
 function displayNotes(listInstance) {
   var noteCard = `
     <div class="note--urgent">
@@ -73,7 +73,12 @@ function displayNotes(listInstance) {
                 <label>Every chance I get, I water the plants.</label>
                 <input type="checkbox" id="checkbox--1">
                 <label>Lion! Cloth talk.</label>
-                <div class="note__bottom--urgent"></div>
+                <div class="note__bottom--urgent">
+                <img src="images/urgent.svg" alt="urgent indicator off">
+                <p>URGENT</p>
+                <img src="images/delete.svg" alt="delete icon">
+                <p>DELETE</p>
+                </div>
             </div>`;
   fridge.insertAdjacentHTML('afterbegin', noteCard)
   hidePrompt();

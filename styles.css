@@ -108,8 +108,21 @@ aside button {
     letter-spacing: .75px;
 }
 
-.sidebar__tasklist-title {
+aside .sidebar__task-list {
     list-style: none;
+}
+
+aside div {
+    display: inline-flex;
+    align-self: center;
+    justify-self: flex-end;
+    width: 98%;
+}
+
+aside .sidebar__form1-item {
+  width: 90%;
+  margin-right: 0px;
+  border-radius: 2px 0px 0px 2px;
 }
 
 aside .sidebar__form1-clear {
@@ -125,6 +138,15 @@ aside .urgent {
     margin: 30px 2% 7px 2%;
     background-color: #FE2102;
     border: 2px solid #7A0F01;
+}
+
+aside img {
+  align-self: center;
+  justify-content: flex-end;
+  height: 24px;
+  padding: 7px;
+  background-color: #1F1f3D;
+  border-radius: 0px 2px 2px 0px;
 }
 
 section {
