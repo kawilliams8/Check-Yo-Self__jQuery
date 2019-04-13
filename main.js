@@ -111,16 +111,16 @@ function displayToDos(toDoInstance) {
   var toDoCard = `
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
-        <div class="todo__middle">
+        <section class="todo__middle">
             <input type="checkbox" id="checkbox--1">
             <label>${toDoInstance.task}</label>
-        </div>
-        <div class="todo__bottom">
+        </section>
+        <section class="todo__bottom">
             <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
-            <p class="todo__bottom-urgent">URGENT</p>
             <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
+            <p class="todo__bottom-urgent">URGENT</p>
             <P class="todo__bottom-delete">DELETE</P>
-        </div>
+        </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard)
   clearTitleInput();
