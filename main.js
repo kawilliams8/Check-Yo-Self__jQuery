@@ -1,6 +1,7 @@
 //Global variables
 titleInput = document.querySelector(".sidebar__form1-title");
 sidebarItemList = document.querySelector(".sidebar__task-list")
+sidebarListItems = document.querySelector("sidebar__tasklist-item");
 itemInput = document.querySelector(".sidebar__form1-item");
 sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
@@ -20,20 +21,29 @@ clearAllButton.addEventListener('click', clearSidebar);
 
 //Function declarations
 function loadPage() {
-  // makeListButton.disabled = true;
+  makeListButton.disabled = true;
   // clearAllButton.disabled = true;
   // filterButton.disabled = true;
   restoreToDos();
-  // restoreMethods();
+  restoreMethods();
 }
 
 function restoreToDos() {
   toDoCollection = JSON.parse(localStorage.getItem("todos")) || [];
-  displayToDos();
+}
+
+function addSidebarTask() {
+  var li = document.createElement("li");
+  var img = `<img src="images/delete.svg alt="delete" height="16px" width="16px"`
+  var task = document.createTextNode(itemInput.value);
+  li.innerText = task.textContent;
+  // sidebarItemList.addElement('beforeend', img)
+  sidebarItemList.insertAdjacentElement('beforeend', li)
+  clearTaskInput();
 }
 
 function enableMakeListButton() {
-  if (titleInput.value !== "" && itemInput.value !== "") {
+  if (titleInput.value !== "") {
     makeListButton.disabled = false;
   }
 }
@@ -58,6 +68,10 @@ function clearTitleInput() {
   makeListButton.disabled = true;
 }
 
+function clearSidebarList() {
+  sidebarItemList.parentNode.removeChild(sidebarItemList);
+}
+
 function hidePrompt() {
   if (toDoCollection.length > 0) {
     listPrompt.classList.add("hidden");
@@ -68,6 +82,22 @@ function showPrompt() {
   listPrompt.classList.remove("hidden");
 }
 
+function restoreMethods() {
+  var oldToDoCollection = toDoCollection;
+  var newToDoInstances = oldToDoCollection.map(function(data) {
+    data = new ToDo (data.id, data.title, data.task, data.urgent);
+    return data;
+  })
+  toDoCollection = newToDoInstances;
+  displaySavedToDos(toDoCollection);
+}
+
+function displaySavedToDos(toDoCollection) {
+  toDoCollection.forEach(function(data) {
+    displayToDos(data);
+  });
+}
+
 function instantiateToDo() {
   var urgent = false
   var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, urgent);
@@ -76,28 +106,14 @@ function instantiateToDo() {
   displayToDos(toDoInstance);
 }
 
-function addSidebarTask() {
-  var li = document.createElement("li");
-  var img = `<img src="images/delete.svg alt="delete" height="16px" width="16px"`
-  var task = document.createTextNode(itemInput.value);
-  li.innerText = task.textContent;
-  // sidebarItemList.addElement('beforeend', img)
-  sidebarItemList.insertAdjacentElement('beforeend', li)
-  clearTaskInput();
-  // clearSidebarList();
-}
-
-function clearSidebarList() {
-  sidebarItemList.parentNode.removeChild(sidebarItemList);
-}
-
 function displayToDos(toDoInstance) {
+  hidePrompt();
   var toDoCard = `
-    <div class="todo__card todo__card-regular">
-        <h2 class="todo__top">${titleInput.value}</h2>
+    <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
+        <h2 class="todo__top">${toDoInstance.title}</h2>
         <div class="todo__middle">
             <input type="checkbox" id="checkbox--1">
-            <label>Don't ever play yourself.</label>
+            <label>${toDoInstance.task}</label>
             <input type="checkbox" id="checkbox--1">
             <label>Every chance I get, I water the plants.</label>
             <input type="checkbox" id="checkbox--1">
@@ -117,7 +133,6 @@ function displayToDos(toDoInstance) {
         </div>
     </div>`;
   fridge.insertAdjacentHTML('afterbegin', toDoCard)
-  hidePrompt();
   clearTitleInput();
   clearTaskInput();
 }
