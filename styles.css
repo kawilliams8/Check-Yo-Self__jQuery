@@ -75,11 +75,9 @@ aside {
     border-right: 2px solid #2C6780;
 }
 
-aside .sidebar__form1,
-.sidebar__form2,
-.urgent {
+aside .sidebar__form1 {
     box-sizing: border-box;
-    margin: 5px 2% 5px 2%;
+    margin: 7px 2% 7px 2%;
     width: 96%;
 }
 
@@ -110,8 +108,8 @@ aside button {
     letter-spacing: .75px;
 }
 
-aside .sidebar__form1 {
-
+aside .sidebar__form1-clear {
+    margin-bottom: 20px;
 }
 
 aside .sidebar__form2 {
@@ -119,7 +117,8 @@ aside .sidebar__form2 {
 }
 
 aside .urgent {
-    margin-top: 30px;
+    width: 96%;
+    margin: 30px 2% 7px 2%;
     background-color: #FE2102;
     border: 2px solid #7A0F01;
 }
