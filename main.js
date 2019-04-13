@@ -28,7 +28,8 @@ function loadPage() {
 }
 
 function restoreToDos() {
-  toDoCollection = JSON.parse(localStorage.getItem("tasks")) || [];
+  toDoCollection = JSON.parse(localStorage.getItem("todos")) || [];
+  displayToDos();
 }
 
 function enableMakeListButton() {

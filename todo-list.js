@@ -8,7 +8,7 @@ class ToDo {
 
     saveToStorage() {
         var stringifiedToDos = JSON.stringify(toDoCollection);
-        localStorage.setItem("tasks", stringifiedToDos);
+        localStorage.setItem("todos", stringifiedToDos);
     }
 
     deleteFromStorage() {
@@ -17,7 +17,8 @@ class ToDo {
     }
 
     updateToDo() {
-        //for title and urgency
+        //for title, tasks and urgency
+        this.saveToStorage();
     }
  
     updateTask() {
