@@ -18,6 +18,7 @@ class ToDo {
 
     updateToDo() {
         //for title, tasks and urgency
+        this.urgent = !this.urgent;
         this.saveToStorage();
     }
  
