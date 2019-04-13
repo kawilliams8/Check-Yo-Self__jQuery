@@ -23,6 +23,10 @@ function loadPage() {
   // restoreMethods();
 }
 
+function restoreTasks() {
+  taskCollection = JSON.parse(localStorage.getItem("tasks")) || [];
+}
+
 function enableMakeListButton() {
   if (titleInput.value !== "" && itemInput.value !== "") {
     makeListButton.disabled = false;
@@ -57,29 +61,22 @@ function addSidebarTask() {
   clearTaskInput();
 }
 
-function restoreTasks() {
-  taskCollection = JSON.parse(localStorage.getItem("tasks")) || [];
-}
 
-// function displayIdeas(listInstance) {
-//   var noteCard = `
-//     <div class="card" data-id="${listInstance.id}">
-//         <section class="cards__top card--section">
-//           <div class="cards__top--left" alt="star-rating"></div>
-//           <div class="cards__top--right" alt="delete-X"></div>
-//         </section>
-//         <section class="cards__middle card--section">
-//           <h3 class="cards__middle--title" id="editable-title" contenteditable="true">${listInstance.title}</h3>
-//           <p class="cards__middle--text" id="editable-body" contenteditable="true">${listInstance.task}</p>
-//         </section>
-//         <section class="cards__bottom card--section">
-//           <img class="cards__bottom--left" src="images/upvote.svg">
-//           <p class="cards__bottom--text">Quality: ${listInstance}</p>
-//           <img class="cards__bottom--right" src="images/downvote.svg">
-//         </section>
-//       </div>`;
-//   .insertAdjacentHTML('afterbegin', noteCard)
-//   hidePrompt();
-//   clearTitleInput();
-//   clearTaskInput();
-// }
+
+function displayNotes(listInstance) {
+  var noteCard = `
+    <div class="note--urgent">
+                <h2>Task Title</h2>
+                <input type="checkbox" id="checkbox--1">
+                <label for="checkbox--1">Don't ever play yourself.</label>
+                <input type="checkbox" id="checkbox--1">
+                <label>Every chance I get, I water the plants.</label>
+                <input type="checkbox" id="checkbox--1">
+                <label>Lion! Cloth talk.</label>
+                <div class="note__bottom--urgent"></div>
+            </div>`;
+  fridge.insertAdjacentHTML('afterbegin', noteCard)
+  hidePrompt();
+  clearTitleInput();
+  clearTaskInput();
+}
