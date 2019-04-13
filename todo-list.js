@@ -2,7 +2,7 @@ class ToDo {
     constructor(id, title, task, urgent) {
         this.id = id;
         this.title = title;
-        this.task = task;
+        this.task = task || [];
         this.urgent = urgent || false;
     }
 

@@ -6,7 +6,7 @@ sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
 clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form1-filter")
-listPrompt = document.querySelector(".note__listprompt");
+listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
 var toDoCollection = [];
 
@@ -15,14 +15,14 @@ window.addEventListener('load', loadPage);
 titleInput.addEventListener('keyup', enableMakeListButton);
 itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', addSidebarTask);
-makeListButton.addEventListener('click', displayToDos);
+makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
 
 //Function declarations
 function loadPage() {
-  makeListButton.disabled = true;
-  clearAllButton.disabled = true;
-  filterButton.disabled = true;
+  // makeListButton.disabled = true;
+  // clearAllButton.disabled = true;
+  // filterButton.disabled = true;
   restoreToDos();
   // restoreMethods();
 }
@@ -72,7 +72,7 @@ function instantiateToDo() {
   var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, urgent);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
-  displayIdeas(toDoInstance);
+  displayToDos(toDoInstance);
 }
 
 function addSidebarTask() {
@@ -83,25 +83,38 @@ function addSidebarTask() {
   // sidebarItemList.addElement('beforeend', img)
   sidebarItemList.insertAdjacentElement('beforeend', li)
   clearTaskInput();
+  // clearSidebarList();
 }
 
 function clearSidebarList() {
   sidebarItemList.parentNode.removeChild(sidebarItemList);
 }
 
-function displayToDos(listInstance) {
+function displayToDos(toDoInstance) {
   var toDoCard = `
-    <div class="todo--urgent">
-                <h2>Task Title</h2>
-                <input type="checkbox">
-                <label for="">${}</label>
-                <div class="todo__bottom--urgent">
-                <img src="images/urgent.svg" alt="urgent indicator off" height="16px" width="16px>
-                <p>URGENT</p>
-                <img src="images/delete.svg" alt="delete icon" height="16px" width="16px>
-                <p>DELETE</p>
-                </div>
-            </div>`;
+    <div class="todo__card todo__card-regular">
+        <h2 class="todo__top">${titleInput.value}</h2>
+        <div class="todo__middle">
+            <input type="checkbox" id="checkbox--1">
+            <label>Don't ever play yourself.</label>
+            <input type="checkbox" id="checkbox--1">
+            <label>Every chance I get, I water the plants.</label>
+            <input type="checkbox" id="checkbox--1">
+            <label>Lion! Cloth talk.</label>
+            <input type="checkbox" id="checkbox--1">
+            <label>Lorem Khaled Ipsum is a major key to success.</label>
+            <input type="checkbox" id="checkbox--1">
+            <label>Congratulations, you played yourself.</label>
+            <input type="checkbox" id="checkbox--1">
+            <label>Another one.</label>
+        </div>
+        <div class="todo__bottom">
+            <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
+            <p class="todo__bottom-urgent">URGENT</p>
+            <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
+            <P class="todo__bottom-delete">DELETE</P>
+        </div>
+    </div>`;
   fridge.insertAdjacentHTML('afterbegin', toDoCard)
   hidePrompt();
   clearTitleInput();
