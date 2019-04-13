@@ -6,6 +6,7 @@ sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
 clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form1-filter")
+listPrompt = document.querySelector(".note__listprompt");
 fridge = document.querySelector(".fridge");
 var taskCollection = [];
 
@@ -15,6 +16,7 @@ titleInput.addEventListener('keyup', enableMakeListButton);
 itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', addSidebarTask);
 makeListButton.addEventListener('click', displayNotes);
+clearAllButton.addEventListener('click', clearSidebar);
 
 //Function declarations
 function loadPage() {
@@ -35,6 +37,16 @@ function enableMakeListButton() {
   }
 }
 
+function enableClearAllButton() {
+
+}
+
+function clearSidebar() {
+  clearTaskInput();
+  clearTitleInput();
+  clearSidebarList();
+}
+
 function clearTaskInput() {
   itemInput.value = "";
   makeListButton.disabled = true;
@@ -47,36 +59,38 @@ function clearTitleInput() {
 
 function hidePrompt() {
   if (taskCollection.length > 0) {
-    prompt.classList.add("hidden");
+    listPrompt.classList.add("hidden");
   }
 }
 
 function showPrompt() {
-  prompt.classList.remove("hidden");
+  listPrompt.classList.remove("hidden");
 }
 
 function addSidebarTask() {
   var li = document.createElement("li");
+  var img = `<img src="images/delete.svg alt="delete" height="16px" width="16px"`
   var task = document.createTextNode(itemInput.value);
   li.innerText = task.textContent;
+  // sidebarItemList.addElement('beforeend', img)
   sidebarItemList.insertAdjacentElement('beforeend', li)
   clearTaskInput();
+}
+
+function clearSidebarList() {
+  sidebarItemList.parentNode.removeChild(sidebarItemList);
 }
 
 function displayNotes(listInstance) {
   var noteCard = `
     <div class="note--urgent">
                 <h2>Task Title</h2>
-                <input type="checkbox" id="checkbox--1">
-                <label for="checkbox--1">Don't ever play yourself.</label>
-                <input type="checkbox" id="checkbox--1">
-                <label>Every chance I get, I water the plants.</label>
-                <input type="checkbox" id="checkbox--1">
-                <label>Lion! Cloth talk.</label>
+                <input type="checkbox">
+                <label for="">${}</label>
                 <div class="note__bottom--urgent">
-                <img src="images/urgent.svg" alt="urgent indicator off">
+                <img src="images/urgent.svg" alt="urgent indicator off" height="16px" width="16px>
                 <p>URGENT</p>
-                <img src="images/delete.svg" alt="delete icon">
+                <img src="images/delete.svg" alt="delete icon" height="16px" width="16px>
                 <p>DELETE</p>
                 </div>
             </div>`;

@@ -110,6 +110,7 @@ aside button {
 
 aside .sidebar__task-list {
     list-style: none;
+    padding: 0 0 0 20px;
 }
 
 aside div {
