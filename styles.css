@@ -108,6 +108,10 @@ aside button {
     letter-spacing: .75px;
 }
 
+.sidebar__tasklist-title {
+    list-style: none;
+}
+
 aside .sidebar__form1-clear {
     margin-bottom: 20px;
 }
@@ -175,4 +179,17 @@ h2 {
 
 .note__bottom--urgent {
     border-top: 2px solid #FEC40E;
+}
+
+.note__listprompt {
+  color: #2C6780;
+  display: grid;
+  font-size: 48px;
+  grid-area: fridge;
+  justify-content: center;
+  margin-top: 21px;
+}
+
+.note__listprompt.hidden {
+  display: none;
 }

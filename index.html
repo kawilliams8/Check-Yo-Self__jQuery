@@ -25,23 +25,23 @@
                 <form class="sidebar__form1">
                     <label class="sidebar__form1" for="">Task Title</label>
                     <input class="sidebar__form1 sidebar__form1-title" type="text">
-                    <div>Task list goes here</div>
-                    <div>Task goes here</div>
-                    <div>Task goes here</div>
-                    <div>Task goes here</div>
-                    <div>Task goes here</div>
+                    <div>
+                        <ul class="sidebar__task-list">
+                            <li class="sidebar__tasklist-item"></li>
+                        </ul>
+                    </div>
                     <label class="sidebar__form1" for="">Task Item</label>
                     <input class="sidebar__form1 sidebar__form1-item" type="text">
                     <button class="sidebar__form1 sidebar__form1-make" type="button">Make Task List</button>
                     <button class="sidebar__form1 sidebar__form1-clear" type="button">Clear All</button>
                 </form>
                 <form class="sidebar__form2">
-                    <button class="urgent" type="button">Filter by Urgency</button>
+                    <button class="sidebar__form1-filter urgent" type="button">Filter by Urgency</button>
                 </form>
             </aside>
         </main>
         <section class="fridge">
-            <h2>Create a List!</h2>
+            <h2 class="note__listprompt">Yo, add a note!</h2>
             <div class="note--urgent">
                 <h2>Task Title</h2>
                 <input type="checkbox" id="checkbox--1">
