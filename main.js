@@ -1,33 +1,47 @@
 //Global variables
-titleInput = element.querySelector(".sidebar__form1-title");
-itemInput = element.querySelector(".sidebar__form1-item");
-makeListButton = element.querySelector(".sidebar__form1-make");
-clearAllButton = element.querySelector(".sidebar__form1-clear");
-var taskCollection;
+titleInput = document.querySelector(".sidebar__form1-title");
+itemInput = document.querySelector(".sidebar__form1-item");
+makeListButton = document.querySelector(".sidebar__form1-make");
+clearAllButton = document.querySelector(".sidebar__form1-clear");
+sidebarItemList = document.querySelector(".sidebar__tasklist-item");
+var taskCollection = [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
-
-titleInput.addEventListener('keyup', enableListButton);
-itemInput.addEventListener('keyup', enableListButton);
-
-makeListButton.addEventListener('click', makeList)
-
+titleInput.addEventListener('keyup', enableMakeListButton);
+itemInput.addEventListener('keyup', enableMakeListButton);
+makeListButton.addEventListener('click', addSidebarTask);
 
 //Function declarations
 function loadPage() {
   makeListButton.disabled = true;
-  enableListButton();
+  restoreTasks();
+  restoreMethods();
 }
 
-function enableListButton() {
-    if (titleInput.value === "" || itemInput.value === "") {
-        makeListButton.disabled = true;
-    } else {
-        makeListButton.disabled = false;
-    }
+function enableMakeListButton() {
+  if (titleInput.value !== "" && itemInput.value !== "") {
+    makeListButton.disabled = false;
+  }
 }
 
-function makeList() {
-
+function clearTaskInput() {
+  itemInput.value = "";
+  saveButton.disabled = true;
 }
+
+function clearTitleInput() {
+  titleInput.value = "";
+  saveButton.disabled = true;
+}
+
+function addSidebarTask() {
+
+  var li = document.createElement("li");
+  var task = document.createTextNode(itemInput.value);
+  li.innerText = task.textContent;
+  sidebarItemList.insertAdjacentElement('beforeend', li)
+
+  clearTaskInput();
+}
+

@@ -108,6 +108,10 @@ aside button {
     letter-spacing: .75px;
 }
 
+.sidebar__tasklist-title {
+    list-style: none;
+}
+
 aside .sidebar__form1-clear {
     margin-bottom: 20px;
 }
