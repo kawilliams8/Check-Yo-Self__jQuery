@@ -31,19 +31,25 @@ h1 {
     line-height: 60px;
     margin: 0px;
     padding-left: 10px;
+    letter-spacing: 1px;
 }
 
 h1 span {
     color: #FEC40E;
 }
 
+header div {
+    display: inline-flex;
+    align-self: center;
+    justify-self: flex-end;
+}
+
 header input {
     grid-area: header;
-    justify-self: flex-end;
     height: 40px;
     width: 270px;
-    padding-left: 30px;
-    font-size: 18px;
+    padding-left: 10px;
+    font-size: 16px;
     font-weight: 400;
     margin-right: 12px;
     border-radius: 0px 2px 2px 0px;
@@ -53,9 +59,8 @@ header input {
 
 header img {
   grid-area: header;
-  height: 26px;
-  padding: 7px;
-  justify-self: flex-end;
+  height: 24px;
+  padding: 9px;
   background-color: #CAE5E3;
   border-radius: 2px 0px 0px 2px;
 }
@@ -66,7 +71,8 @@ aside {
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    background: #587A8B;
+    background: #46869A;
+    border-right: 2px solid #2C6780;
 }
 
 aside .sidebar__form1,
@@ -109,13 +115,13 @@ aside .sidebar__form1 {
 }
 
 aside .sidebar__form2 {
-    border-top: 2px solid #587A8B;
+    border-top: 2px solid #2C6780
 }
 
 aside .urgent {
     margin-top: 30px;
-    background-color: #EF4A23;
-    border: 2px solid #772615; 
+    background-color: #FE2102;
+    border: 2px solid #7A0F01;
 }
 
 section {
