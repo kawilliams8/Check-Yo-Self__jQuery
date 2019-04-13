@@ -114,16 +114,6 @@ function displayToDos(toDoInstance) {
         <div class="todo__middle">
             <input type="checkbox" id="checkbox--1">
             <label>${toDoInstance.task}</label>
-            <input type="checkbox" id="checkbox--1">
-            <label>Every chance I get, I water the plants.</label>
-            <input type="checkbox" id="checkbox--1">
-            <label>Lion! Cloth talk.</label>
-            <input type="checkbox" id="checkbox--1">
-            <label>Lorem Khaled Ipsum is a major key to success.</label>
-            <input type="checkbox" id="checkbox--1">
-            <label>Congratulations, you played yourself.</label>
-            <input type="checkbox" id="checkbox--1">
-            <label>Another one.</label>
         </div>
         <div class="todo__bottom">
             <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
@@ -132,7 +122,7 @@ function displayToDos(toDoInstance) {
             <P class="todo__bottom-delete">DELETE</P>
         </div>
     </div>`;
-  fridge.insertAdjacentHTML('afterbegin', toDoCard)
+  fridge.insertAdjacentHTML('beforeend', toDoCard)
   clearTitleInput();
   clearTaskInput();
 }
