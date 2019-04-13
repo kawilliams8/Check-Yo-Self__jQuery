@@ -159,52 +159,42 @@ h2 {
     margin: 0px;
 }
 
-.note--regular,
-.note--urgent {
+.todoe--regular,
+.todo--urgent {
     color: #1F1F3D;
     margin: 30px;
     width: 300px;
     overflow-wrap: break-word;
 }
-
-.note--regular h2,
-.note--urgent h2 {
+.todo--regular h2,.todo--urgent h2 {
     font-weight: 700;
     padding: 10px;
 }
-
-.note--regular h2 {
+.todo--regular h2 {
     border-bottom: 2px solid #C7D3D8;
 }
-
-.note--urgent h2 {
+.todo--urgent h2 {
     border-bottom: 2px solid #FEC40E;
 }
-
-.note--regular {
+.todo--regular {
     background-color: #FBFDFF;
     border: 2px solid #C7D3D8;
 }
-
-.note--urgent {
+.todo--urgent {
     background-color: #FEE89E;
     border: 2px solid #FEC40E;
 }
-
-.note__bottom--regular,
-.note__bottom--urgent {
+.todo__bottom--regular,
+.todo__bottom--urgent {
     height: 30px;
 }
-
-.note__bottom--regular {
+.todo__bottom--regular {
     border-top: 2px solid #C7D3D8;
 }
-
-.note__bottom--urgent {
+.todo__bottom--urgent {
     border-top: 2px solid #FEC40E;
 }
-
-.note__listprompt {
+.todo__listprompt {
   color: #2C6780;
   display: grid;
   font-size: 48px;
@@ -212,7 +202,6 @@ h2 {
   justify-content: center;
   margin-top: 21px;
 }
-
-.note__listprompt.hidden {
+.todo__listprompt.hidden {
   display: none;
 }
