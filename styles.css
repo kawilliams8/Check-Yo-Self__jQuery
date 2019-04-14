@@ -110,10 +110,26 @@ h1 span {
   letter-spacing: .75px;
 }
 
-.sidebar__task-list {
+.sidebar__tasklist-insert {
   list-style: none;
-  padding: 0 0 0 20px;
+  padding: 10px 0 10px 0px;
+  display: flex;
+}
+
+.task-item__icon-delete {
+  margin-left: 7%;
+  height: 26px;
+  flex-flow: row;
+  align-self: baseline;
+}
+
+.task-item__text {
+  color: #fff;
+  font-size: 18px;
   margin: 0px;
+  flex-flow: row;
+  align-self: center;
+  padding-left: 5px;
 }
 
 .sidebar__form1-div {
@@ -123,7 +139,7 @@ h1 span {
   width: 100%;
 }
 
-#sidebar__form1-iteminput {
+#sidebar__form1-item-input {
   width: 85%;
   margin-right: 0px;
   border-radius: 2px 0px 0px 2px;
@@ -144,22 +160,25 @@ h1 span {
   height: 38px;
   width: 98%;
   align-self: center;
+  border: none;
 }
 
-.sidebar .sidebar__form1-clear {
+.sidebar__form1-clear {
   margin-bottom: 20px;
 }
 
-.sidebar .sidebar__form2 {
+.sidebar__form2 {
   border-top: 2px solid #2C6780
 }
 
-.sidebar .urgent {
+.urgent {
   width: 96%;
   margin: 30px 2% 7px 2%;
   background-color: #FE2102;
   border: 2px solid #7A0F01;
 }
+
+/* Begin Fridge and Prompt styling */
 
 .fridge {
   grid-area: fridge;
@@ -168,6 +187,19 @@ h1 span {
 
 h2 {
   margin: 0px;
+}
+
+.todo__listprompt {
+  color: #2C6780;
+  display: grid;
+  font-size: 48px;
+  grid-area: fridge;
+  justify-content: center;
+  margin-top: 21px;
+}
+
+.todo__listprompt.hidden {
+  display: none;
 }
 
 /* Begin ToDo cards styles */
@@ -231,19 +263,4 @@ h2 {
 
 .todo__bottom-delete {
   justify-content: flex-end;
-}
-
-/* Begin prompt to make a ToDo styles */
-
-.todo__listprompt {
-  color: #2C6780;
-  display: grid;
-  font-size: 48px;
-  grid-area: fridge;
-  justify-content: center;
-  margin-top: 21px;
-}
-
-.todo__listprompt.hidden {
-  display: none;
 }
