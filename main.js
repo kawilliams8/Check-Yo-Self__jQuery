@@ -9,13 +9,14 @@ clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form1-filter")
 listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
-var toDoCollection = [];
+
+var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
 titleInput.addEventListener('keyup', enableMakeListButton);
 itemInput.addEventListener('keyup', enableMakeListButton);
-sidebarTaskAdd.addEventListener('click', addSidebarTask);
+sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
 
@@ -24,26 +25,24 @@ function loadPage() {
   makeListButton.disabled = true;
   // clearAllButton.disabled = true;
   // filterButton.disabled = true;
-  restoreToDos();
-  restoreMethods();
+  reinstantiateToDos();
 }
 
-function restoreToDos() {
-  toDoCollection = JSON.parse(localStorage.getItem("todos")) || [];
-}
-
-function addSidebarTask() {
-  var li = document.createElement("li");
-  var img = `<img src="images/delete.svg alt="delete" height="16px" width="16px"`
-  var task = document.createTextNode(itemInput.value);
-  li.innerText = task.textContent;
-  // sidebarItemList.addElement('beforeend', img)
-  sidebarItemList.insertAdjacentElement('beforeend', li)
+function displaySidebarTasks(e) {
+  (e).preventDefault();
+  var task = `
+	  <div class="sidebar__task-list">
+		  <img class="task-item__icon--delete" src="images/delete.svg">
+		  <p class="task-item__text">${itemInput.value}</p>
+	  </div>`;
+  sidebarItemList.insertAdjacentHTML('beforeend', task);
   clearTaskInput();
 }
 
 function enableMakeListButton() {
-  if (titleInput.value !== "") {
+  console.log(titleInput.value);
+  console.log(itemInput.value);
+  if (titleInput.value !== "" && itemInput.value !== "") {
     makeListButton.disabled = false;
   }
 }
@@ -82,7 +81,7 @@ function showPrompt() {
   listPrompt.classList.remove("hidden");
 }
 
-function restoreMethods() {
+function reinstantiateToDos() {
   var oldToDoCollection = toDoCollection;
   var newToDoInstances = oldToDoCollection.map(function(data) {
     data = new ToDo (data.id, data.title, data.task, data.urgent);
@@ -99,8 +98,7 @@ function displaySavedToDos(toDoCollection) {
 }
 
 function instantiateToDo() {
-  var urgent = false
-  var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, urgent);
+  var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, false);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
   displayToDos(toDoInstance);
@@ -112,8 +110,6 @@ function displayToDos(toDoInstance) {
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
         <section class="todo__middle">
-            <input type="checkbox" id="checkbox--1">
-            <label>${toDoInstance.task}</label>
         </section>
         <section class="todo__bottom">
             <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
@@ -122,7 +118,15 @@ function displayToDos(toDoInstance) {
             <P class="todo__bottom-delete">DELETE</P>
         </section>
     </div>`;
-  fridge.insertAdjacentHTML('beforeend', toDoCard)
+  fridge.insertAdjacentHTML('beforeend', toDoCard);
+  toDoInstance.task.forEach(function(data) {
+    document.querySelector(".todo__middle").insertAdjacentHTML('beforeend', `
+    <div class="todo__middle">
+				<img class="todo__middle-checkbox" src="images/checkbox.svg">
+				<p class="todo__middle-text">${data.content}</p>
+			</div>
+    `)
+  })
   clearTitleInput();
   clearTaskInput();
 }

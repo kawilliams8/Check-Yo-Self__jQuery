@@ -16,30 +16,28 @@
         <header>
             <h1 class="header">CHECK <span>YO&rsquo;</span> SELF</h1>
             <div class="header__search">
-                <img src="images/search.svg" alt="search box">
-                <input class="header" type="text" placeholder="Search">
+                <img class="header__search-img" src="images/search.svg" alt="search box">
+                <input class="header__search-input" type="text" placeholder="Search">
             </div>
         </header>
         <main>
-            <aside >
+            <aside class="sidebar">
                 <form class="sidebar__form1">
-                    <label class="sidebar__form1" for="">Task Title</label>
-                    <input class="sidebar__form1 sidebar__form1-title" type="text">
-                    <div>
-                        <ul class="sidebar__task-list">
-                            <li class="sidebar__tasklist-item"></li>
-                        </ul>
+                    <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-title-input">Task Title</label>
+                    <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-title-input" type="text">
+                    <div class="sidebar__form1-task-list">
+                        <ul class="sidebar__form1-task-list"></ul>
                     </div>
-                    <label class="sidebar__form1" for="">Task Item</label>
-                    <div class="sidebar__form1-plus">
-                        <input class="sidebar__form1 sidebar__form1-item" type="text">
-                        <img src="images/plus.svg" alt="submit list item">
+                    <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-item">Task Item</label>
+                    <div class="sidebar__form1-div">
+                        <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-iteminput" type="text">
+                        <img class="sidebar__form1 sidebar__form1-plus" src="images/plus.svg" alt="submit list item">
                     </div>
-                    <button class="sidebar__form1 sidebar__form1-make" type="button">Make Task List</button>
-                    <button class="sidebar__form1 sidebar__form1-clear" type="button">Clear All</button>
+                    <button class="sidebar__form1 sidebar__form1-button sidebar__form1-make" type="button">Make Task List</button>
+                    <button class="sidebar__form1 sidebar__form1-button sidebar__form1-clear" type="button">Clear All</button>
                 </form>
                 <form class="sidebar__form2">
-                    <button class="sidebar__form1-filter urgent" type="button">Filter by Urgency</button>
+                    <button class="sidebar__form2-filter sidebar__form1-button urgent" type="button">Filter by Urgency</button>
                 </form>
             </aside>
         </main>
