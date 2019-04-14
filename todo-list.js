@@ -1,29 +1,30 @@
 class ToDo {
-    constructor(id, title, task, urgent) {
+    constructor(id, title, taskObjs, urgent) {
         this.id = id;
         this.title = title;
-        this.task = [];
+        this.task = taskObjs || [];
         this.urgent = urgent || false;
     }
 
     saveToStorage() {
-        var stringifiedToDos = JSON.stringify(toDoCollection);
-        localStorage.setItem("savedTodos", stringifiedToDos);
+        localStorage.setItem("savedTodos", JSON.stringify(toDoCollection));
     }
 
-    deleteFromStorage() {
-        toDoCollection.splice(collectionIndex, 1);
+    deleteFromStorage(collectionIndex) {
+        //toDoCollection.splice(collectionIndex, 1);
         this.saveToStorage();
     }
 
     updateToDo() {
         //for title, tasks and urgency
-        this.urgent = !this.urgent;
+        // this.urgent = !this.urgent;
         this.saveToStorage();
     }
  
-    updateTask() {
+    updateTask(editedTitle, completed) {
         //to update content and if completed (T/F)
+        //this.title = editedTitle;
+        //this.completed = completed || false;
         this.saveToStorage();
     }
 }
