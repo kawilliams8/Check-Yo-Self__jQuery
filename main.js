@@ -6,7 +6,7 @@ itemInput = document.querySelector("#sidebar__form1-item-input");
 sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
 clearAllButton = document.querySelector(".sidebar__form1-clear");
-filterButton = document.querySelector(".sidebar__form1-filter")
+filterButton = document.querySelector(".sidebar__form2-filter")
 listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
 
@@ -23,43 +23,36 @@ clearAllButton.addEventListener('click', clearSidebar);
 //Function declarations
 function loadPage() {
   makeListButton.disabled = true;
-  // clearAllButton.disabled = true;
-  // filterButton.disabled = true;
+  clearAllButton.disabled = true;
+  filterButton.disabled = true;
   reinstantiateToDos();
 }
 
 function displaySidebarTasks(e) {
+  if (itemInput.value === "") {
+    return;
+  } else {
   (e).preventDefault();
   var task = `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text">${itemInput.value}</p>
 	  </div>`;
-  sidebarTaskList.insertAdjacentHTML('beforeend', task);
+  sidebarTaskList.insertAdjacentHTML('afterbegin', task);
   clearTaskInput();
+  }
 }
 
 function enableMakeListButton() {
-  console.log(titleInput.value);
-  console.log(itemInput.value);
   if (titleInput.value !== "" && itemInput.value !== "") {
     makeListButton.disabled = false;
   }
 }
 
-function enableClearAllButton() {
-
-}
-
 function clearSidebar() {
-  clearTaskInput();
   clearTitleInput();
+  clearTaskInput();
   clearSidebarList();
-}
-
-function clearTaskInput() {
-  itemInput.value = "";
-  makeListButton.disabled = true;
 }
 
 function clearTitleInput() {
@@ -67,8 +60,13 @@ function clearTitleInput() {
   makeListButton.disabled = true;
 }
 
+function clearTaskInput() {
+  itemInput.value = "";
+  makeListButton.disabled = true;
+}
+
 function clearSidebarList() {
-  sidebarItemList.parentNode.removeChild(sidebarItemList);
+  sidebarTaskList.parentNode.removeChild(sidebarTaskList);
 }
 
 function hidePrompt() {
@@ -101,7 +99,9 @@ function instantiateToDo() {
   var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, false);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
+  clearSidebar();
   displayToDos(toDoInstance);
+  clearAllButton.disabled = false;
 }
 
 function displayToDos(toDoInstance) {
