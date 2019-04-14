@@ -58,12 +58,11 @@ function displaySidebarTasks(e) {
     return;
   } else {
     (e).preventDefault();
-    var task = `
+    sidebarTaskList.innerHTML += `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text">${itemInput.value}</p>
 	  </div>`;
-    sidebarTaskList.insertAdjacentHTML('afterbegin', task);
     clearTaskInput();
   }
 }
@@ -128,10 +127,14 @@ function displayToDos(toDoInstance) {
         <section class="todo__middle">
         </section>
         <section class="todo__bottom">
+          <article class="card-bottom-left">
             <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
-            <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
             <p class="todo__bottom-urgent">URGENT</p>
-            <P class="todo__bottom-delete">DELETE</P>
+          </article>
+          <article class="card-bottom-right">
+            <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
+            <p class="todo__bottom-delete">DELETE</p>
+          </article>
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
