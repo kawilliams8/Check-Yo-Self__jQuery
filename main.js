@@ -62,18 +62,10 @@ function displaySidebarTasks(e) {
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text">${itemInput.value}</p>
-	  </div>`;
+    </div>`;
+    addTaskToCollection();
     clearTaskInput();
   }
-}
-
-function addTaskToCollection() {
-  var newTaskObj = {
-    text: `${itemInput.value}`,
-    id: `${id}`,
-  }
-  console.log(newTaskObj);
-  taskCollection.task.push(newTaskObj);
 }
 
 function clearSidebar() {
@@ -108,12 +100,21 @@ function showPrompt() {
   listPrompt.classList.remove("hidden");
 }
 
-//Fridge card display, instantiation and display
+//Fridge card display, instantiation and update functions
+
+function addTaskToCollection() {
+  var taskObj = {
+    text: `${itemInput.value}`,
+  }
+  console.log(taskObj);
+  var taskArray = toDoCollection.task.push(taskObj);
+  console.log(taskArray);
+}
 
 function instantiateToDo() {
-  var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, false);
+  var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, taskArray, false);
   toDoCollection.push(toDoInstance);
-  toDoInstance.saveToStorage(toDoCollection);
+  toDoCollection.saveToStorage(toDoInstance);
   clearSidebar();
   displayToDos(toDoInstance);
   clearAllButton.disabled = false;
@@ -138,7 +139,7 @@ function displayToDos(toDoInstance) {
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
-  toDoInstance.task.forEach(function(data) {
+  toDoCollection.task.forEach(function(data) {
     document.querySelector(".todo__middle").insertAdjacentHTML('beforeend', `
     <div class="todo__middle">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
@@ -149,3 +150,16 @@ function displayToDos(toDoInstance) {
   clearTitleInput();
   clearTaskInput();
 }
+
+// Editing the To Do lists on the Fridge
+
+// function displayUrgent(//card by ID) {
+//   console.log('urgent function')
+
+//   if (toDoCollection.urgent) {
+//     // card by ID .querySelector('.urgent').setAttribute('src', 'images/urgent-active.svg')
+
+//   } else {
+//     // card by ID .querySelector('//not urgent').setAttribute('src', 'images/urgent.svg')
+//   }
+// }
