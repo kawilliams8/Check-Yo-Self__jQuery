@@ -20,7 +20,8 @@ sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
 
-//Function declarations
+//Page load and stored item reinstantiation functions
+
 function loadPage() {
   makeListButton.disabled = true;
   clearAllButton.disabled = true;
@@ -28,25 +29,51 @@ function loadPage() {
   reinstantiateToDos();
 }
 
-function displaySidebarTasks(e) {
-  if (itemInput.value === "") {
-    return;
-  } else {
-  (e).preventDefault();
-  var task = `
-	  <div class="sidebar__tasklist-insert">
-		  <img class="task-item__icon-delete" src="images/delete.svg">
-		  <p class="task-item__text">${itemInput.value}</p>
-	  </div>`;
-  sidebarTaskList.insertAdjacentHTML('afterbegin', task);
-  clearTaskInput();
-  }
+function reinstantiateToDos() {
+  var oldToDoCollection = toDoCollection;
+  var newToDoInstances = oldToDoCollection.map(function (data) {
+    data = new ToDo(data.id, data.title, data.task, data.urgent);
+    return data;
+  })
+  toDoCollection = newToDoInstances;
+  displaySavedToDos(toDoCollection);
 }
+
+function displaySavedToDos(toDoCollection) {
+  toDoCollection.forEach(function (data) {
+    displayToDos(data);
+  });
+}
+
+//Sidebar display, button handling, and input clearing functions
 
 function enableMakeListButton() {
   if (titleInput.value !== "" && itemInput.value !== "") {
     makeListButton.disabled = false;
   }
+}
+
+function displaySidebarTasks(e) {
+  if (itemInput.value === "") {
+    return;
+  } else {
+    (e).preventDefault();
+    sidebarTaskList.innerHTML += `
+	  <div class="sidebar__tasklist-insert">
+		  <img class="task-item__icon-delete" src="images/delete.svg">
+		  <p class="task-item__text">${itemInput.value}</p>
+	  </div>`;
+    clearTaskInput();
+  }
+}
+
+function addTaskToCollection() {
+  var newTaskObj = {
+    text: `${itemInput.value}`,
+    id: `${id}`,
+  }
+  console.log(newTaskObj);
+  taskCollection.task.push(newTaskObj);
 }
 
 function clearSidebar() {
@@ -69,6 +96,8 @@ function clearSidebarList() {
   sidebarTaskList.parentNode.removeChild(sidebarTaskList);
 }
 
+//Fridge prompt hide/show functions
+
 function hidePrompt() {
   if (toDoCollection.length > 0) {
     listPrompt.classList.add("hidden");
@@ -79,21 +108,7 @@ function showPrompt() {
   listPrompt.classList.remove("hidden");
 }
 
-function reinstantiateToDos() {
-  var oldToDoCollection = toDoCollection;
-  var newToDoInstances = oldToDoCollection.map(function(data) {
-    data = new ToDo (data.id, data.title, data.task, data.urgent);
-    return data;
-  })
-  toDoCollection = newToDoInstances;
-  displaySavedToDos(toDoCollection);
-}
-
-function displaySavedToDos(toDoCollection) {
-  toDoCollection.forEach(function(data) {
-    displayToDos(data);
-  });
-}
+//Fridge card display, instantiation and display
 
 function instantiateToDo() {
   var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, false);
@@ -112,10 +127,14 @@ function displayToDos(toDoInstance) {
         <section class="todo__middle">
         </section>
         <section class="todo__bottom">
+          <article class="card-bottom-left">
             <img class="todo__bottom-urgent" src="images/urgent.svg" alt="urgent">
-            <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
             <p class="todo__bottom-urgent">URGENT</p>
-            <P class="todo__bottom-delete">DELETE</P>
+          </article>
+          <article class="card-bottom-right">
+            <img class="todo__bottom-delete" src="images/delete.svg" alt="delete">
+            <p class="todo__bottom-delete">DELETE</p>
+          </article>
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
