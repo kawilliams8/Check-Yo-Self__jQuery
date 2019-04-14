@@ -1,8 +1,8 @@
 //Global variables
-titleInput = document.querySelector(".sidebar__form1-title");
-sidebarItemList = document.querySelector(".sidebar__task-list")
+titleInput = document.querySelector("#sidebar__form1-title-input");
+sidebarTaskList = document.querySelector(".sidebar__tasklist")
 sidebarListItems = document.querySelector("sidebar__tasklist-item");
-itemInput = document.querySelector(".sidebar__form1-item");
+itemInput = document.querySelector("#sidebar__form1-item-input");
 sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
 clearAllButton = document.querySelector(".sidebar__form1-clear");
@@ -31,11 +31,11 @@ function loadPage() {
 function displaySidebarTasks(e) {
   (e).preventDefault();
   var task = `
-	  <div class="sidebar__task-list">
-		  <img class="task-item__icon--delete" src="images/delete.svg">
+	  <div class="sidebar__tasklist-insert">
+		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text">${itemInput.value}</p>
 	  </div>`;
-  sidebarItemList.insertAdjacentHTML('beforeend', task);
+  sidebarTaskList.insertAdjacentHTML('beforeend', task);
   clearTaskInput();
 }
 
