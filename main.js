@@ -9,6 +9,8 @@ clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form2-filter")
 listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
+var newTaskArray = [];
+
 
 var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
 
@@ -19,6 +21,7 @@ itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
+sidebarTaskList.addEventListener('click', deleteSidebarTasks);
 
 //Page load and stored item reinstantiation functions
 
@@ -68,6 +71,10 @@ function displaySidebarTasks(e) {
   }
 }
 
+function deleteSidebarTasks(e) {
+  e.target.closest("div").remove();
+}
+
 function clearSidebar() {
   clearTitleInput();
   clearTaskInput();
@@ -104,17 +111,17 @@ function showPrompt() {
 
 function addTaskToCollection() {
   var taskObj = {
-    text: `${itemInput.value}`,
+    text: itemInput.value,
+    id: Date.now()
   }
-  console.log(taskObj);
-  var taskArray = toDoCollection.task.push(taskObj);
-  console.log(taskArray);
+  newTaskArray.push(taskObj);
+  // instantiateToDo(newTaskArray);
 }
 
-function instantiateToDo() {
-  var toDoInstance = new ToDo(Date.now(), titleInput.value, itemInput.value, taskArray, false);
+function instantiateToDo(newTaskArray) {
+  var toDoInstance = new ToDo(Date.now(), titleInput.value, newTaskArray);
   toDoCollection.push(toDoInstance);
-  toDoCollection.saveToStorage(toDoInstance);
+  toDoInstance.saveToStorage(toDoCollection);
   clearSidebar();
   displayToDos(toDoInstance);
   clearAllButton.disabled = false;
@@ -139,11 +146,16 @@ function displayToDos(toDoInstance) {
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
-  toDoCollection.task.forEach(function(data) {
+  displayTaskList(toDoInstance);
+}
+
+function displayTaskList(toDoInstance) {
+  newTaskArray.forEach(function(task, index) {
+    console.log("task: " + task.text);
     document.querySelector(".todo__middle").insertAdjacentHTML('beforeend', `
     <div class="todo__middle">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
-				<p class="todo__middle-text">${data.content}</p>
+				<p class="todo__middle-text">${task.text}</p>
 			</div>
     `)
   })

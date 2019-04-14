@@ -220,6 +220,17 @@ h2 {
   border-bottom: 2px solid #C7D3D8;
 }
 
+.todo__middle p {
+    font-size: 16px;
+    margin: 0px;
+}
+
+.todo__middle img{
+    padding-top: 20px;
+    margin-left: 7%;
+    height: 26px;
+}
+
 .todo__bottom {
   border-top: 2px solid #C7D3D8;
   height: 50px;
