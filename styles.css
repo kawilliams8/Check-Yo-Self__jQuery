@@ -9,6 +9,7 @@ body {
     "sidebar fridge";
   grid-template-columns: 30% 70%;
   grid-template-rows: 60px 100%;
+  margin: 0px;
 }
 
 /* Begin of header styles */
@@ -40,13 +41,21 @@ h1 span {
   color: #FEC40E;
 }
 
-header div {
+.header__search {
   display: inline-flex;
   align-self: center;
   justify-self: flex-end;
 }
 
-header input {
+.header__search-img {
+  grid-area: header;
+  height: 24px;
+  padding: 9px;
+  background-color: #CAE5E3;
+  border-radius: 2px 0px 0px 2px;
+}
+
+.header__search-input {
   grid-area: header;
   height: 40px;
   width: 270px;
@@ -59,17 +68,9 @@ header input {
   color: #fff;
 }
 
-header img {
-  grid-area: header;
-  height: 24px;
-  padding: 9px;
-  background-color: #CAE5E3;
-  border-radius: 2px 0px 0px 2px;
-}
-
 /* Begin sidebar styles */
 
-aside {
+.sidebar {
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
@@ -79,82 +80,88 @@ aside {
   border-right: 2px solid #2C6780;
 }
 
-aside .sidebar__form1 {
+.sidebar__form1 {
   box-sizing: border-box;
   margin: 7px 2% 7px 2%;
   width: 96%;
 }
 
-aside label {
+.sidebar__form1-label {
   font-size: 12px;
   font-weight: 400;
   color: #ffffff;
 }
 
-aside input, 
-button {
-  width: 90%;
+.sidebar__form1-input {
+  width: 98%;
   height: 38px;
   border: 2px solid #1F1f3D;
   border-radius: 2px;
   padding: 0;
   font-size: 16px;
-}
-
-aside input {
   padding-left: 5px;
 }
 
-aside button {
+.sidebar__form1-button {
+  width: 98%;
   background: #1F1f3D;
   color: #fff;
   font-weight: 700;
   letter-spacing: .75px;
 }
 
-aside .sidebar__task-list {
+.sidebar__task-list {
   list-style: none;
   padding: 0 0 0 20px;
+  margin: 0px;
 }
 
-aside div {
+.sidebar__form1-div {
   display: inline-flex;
   align-self: center;
   justify-self: flex-end;
-  width: 98%;
+  width: 100%;
 }
 
-aside .sidebar__form1-item {
-  width: 90%;
+#sidebar__form1-iteminput {
+  width: 85%;
   margin-right: 0px;
   border-radius: 2px 0px 0px 2px;
 }
 
-aside .sidebar__form1-clear {
+.sidebar__form1-plus {
+  align-self: center;
+  justify-content: flex-end;
+  height: 38px;
+  width: 15%;
+  padding: 7px;
+  background-color: #1F1f3D;
+  border-radius: 0px 2px 2px 0px;
+  margin: 7px 0% 7px 0;
+}
+
+.sidebar__form1-button {
+  height: 38px;
+  width: 98%;
+  align-self: center;
+}
+
+.sidebar .sidebar__form1-clear {
   margin-bottom: 20px;
 }
 
-aside .sidebar__form2 {
+.sidebar .sidebar__form2 {
   border-top: 2px solid #2C6780
 }
 
-aside .urgent {
+.sidebar .urgent {
   width: 96%;
   margin: 30px 2% 7px 2%;
   background-color: #FE2102;
   border: 2px solid #7A0F01;
 }
 
-aside img {
-  align-self: center;
-  justify-content: flex-end;
-  height: 24px;
-  padding: 7px;
-  background-color: #1F1f3D;
-  border-radius: 0px 2px 2px 0px;
-}
-
-section {
+.fridge {
   grid-area: fridge;
   background-color: #F4F7F8;
 }
