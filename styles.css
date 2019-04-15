@@ -269,3 +269,58 @@ h2 {
 .todo__bottom .urgent {
   border-top: 2px solid #FEC40E;
 }
+
+/* //Media queries for iPhone 6, 7 & 8 in portrait */
+
+@media only screen 
+and (max-device-width : 400px) 
+and (orientation : portrait) { 
+
+body {
+  grid-template-rows: 120px 100%;
+  margin: 0px;
+  grid-template-areas: 
+    "header"
+    "sidebar"
+    "fridge";
+  grid-template-columns: 1fr;
+  height: auto;
+  width: 80%;
+}
+
+/* Header */ 
+header {
+  width: 100%;
+  height: 140px;
+  line-height: 36px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: auto;
+  padding-top: 10px;
+  line-height: 36px;
+}
+
+.header__search {
+  margin: auto;
+  padding: -10px auto 10px auto;
+}
+
+/* Sidebar */
+
+.main {
+  visibility: hidden;
+}
+
+.sidebar {
+  width: 100%;
+  height: auto;
+}
+
+/* Fridge */
+
+.fridge {
+  width: 100%;
+  height: auto;
+}
