@@ -15,8 +15,8 @@ var newTaskArray = [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
-// titleInput.addEventListener('keyup', enableMakeListButton);
-// itemInput.addEventListener('keyup', enableMakeListButton);
+titleInput.addEventListener('keyup', enableMakeListButton);
+itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
@@ -25,7 +25,7 @@ sidebarTaskList.addEventListener('click', deleteSidebarTasks);
 //Page load and stored item reinstantiation functions
 
 function loadPage() {
-  // makeListButton.disabled = true;
+  makeListButton.disabled = true;
   clearAllButton.disabled = true;
   filterButton.disabled = true;
   reinstantiateToDos(toDoCollection);
@@ -49,11 +49,11 @@ function displaySavedToDos(newToDoInstances) {
 
 //Sidebar display, button handling, and input clearing functions
 
-// function enableMakeListButton() {
-//   if (titleInput.value !== "" && itemInput.value !== "") {
-//     makeListButton.disabled = false;
-//   }
-// }
+function enableMakeListButton() {
+  if (titleInput.value !== "" && sidebarTaskList.length === 0) {
+    makeListButton.disabled = false;
+  }
+}
 
 function displaySidebarTasks() {
   if (itemInput.value === "") {
@@ -157,7 +157,6 @@ function displayToDos(toDoInstance) {
 }
 
 function displayTaskList(toDoInstance) {
-  
   toDoInstance.forEach(function(task, index) {
     var cardMiddle = el.closest(".todo__middle");
     cardMiddle.insertAdjacentHTML('beforeend', `
@@ -172,14 +171,3 @@ function displayTaskList(toDoInstance) {
 }
 
 // Editing the To Do lists on the Fridge
-
-// function displayUrgent(//card by ID) {
-//   console.log('urgent function')
-
-//   if (toDoCollection.urgent) {
-//     // card by ID .querySelector('.urgent').setAttribute('src', 'images/urgent-active.svg')
-
-//   } else {
-//     // card by ID .querySelector('//not urgent').setAttribute('src', 'images/urgent.svg')
-//   }
-// }
