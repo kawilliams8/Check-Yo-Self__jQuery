@@ -2,12 +2,11 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   background: #fff;
-  height: 1000px;
   display: grid;
   grid-template-areas: 
     "header header"
     "sidebar fridge";
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 25% 75%;
   grid-template-rows: 60px 100%;
   margin: 0px;
 }
@@ -183,6 +182,7 @@ h1 span {
 .fridge {
   grid-area: fridge;
   background-color: #F4F7F8;
+  column-width: 17rem;  
 }
 
 h2 {
@@ -204,14 +204,15 @@ h2 {
 
 /* Begin ToDo cards styles */
 
+
 .todo__card {
   color: #1F1F3D;
-  margin: 30px;
+  margin: 20px;
   width: 300px;
   overflow-wrap: break-word;
   background-color: #FBFDFF;
   border: 2px solid #C7D3D8;
-
+  display: inline-block;
 }
 
 .todo__card h2 {
@@ -220,15 +221,30 @@ h2 {
   border-bottom: 2px solid #C7D3D8;
 }
 
-.todo__middle p {
-    font-size: 16px;
-    margin: 0px;
+.todo__middle {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo__middle-checkbox {
+  margin-left: 7%;
+  height: 26px;
+  flex-flow: row;
+  align-self: baseline;
+}
+
+.todo__middle-text {
+  font-size: 16px;
+  padding-left: 5px;
+  margin: 0px;
+  flex-flow: row;
+  align-self: center;
 }
 
 .todo__middle img{
-    padding-top: 20px;
-    margin-left: 7%;
-    height: 26px;
+  padding-top: 20px;
+  margin-left: 7%;
+  height: 26px;
 }
 
 .todo__bottom {
@@ -309,18 +325,10 @@ h1 {
 
 /* Sidebar */
 
-main {
-  height: fit-content;
-}
-
-/* .sidebar {
-  width: 100%;
-  height: fit-content;
-} */
-
 /* Fridge */
 
 .fridge {
   width: 100%;
   height: auto;
 }
+
