@@ -15,7 +15,7 @@ var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
 //Event Listeners
 window.addEventListener('load', loadPage);
 titleInput.addEventListener('keyup', enableMakeListButton);
-// itemInput.addEventListener('keyup', enableMakeListButton);
+itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', addTaskToCollection);
 clearAllButton.addEventListener('click', clearSidebar);
@@ -49,7 +49,7 @@ function displaySavedToDos(newToDoInstances) {
 //Sidebar display, button handling, and input clearing functions
 
 function enableMakeListButton() {
-  if (titleInput.value !== "" && sidebarTaskList.value !== "") {
+  if (titleInput.value !== "" && sidebarTaskList.length === 0) {
     makeListButton.disabled = false;
   }
 }
@@ -162,32 +162,9 @@ function collectTaskList(toDoInstance, toDoCard) {
     <div class="todo__middle">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
 				<p class="todo__middle-text">${data.text}</p>
-			</div>
-    `
+		</div>`
   })
   return cardTasks;
 }
 
 // Editing the To Do lists on the Fridge
-
-// function displayUrgent(//card by ID) {
-//   console.log('urgent function')
-
-//   if (toDoCollection.urgent) {
-//     // card by ID .querySelector('.urgent').setAttribute('src', 'images/urgent-active.svg')
-
-//   } else {
-//     // card by ID .querySelector('//not urgent').setAttribute('src', 'images/urgent.svg')
-//   }
-// }
-
-
-// new array that document.querySelects the p tag only (by class)
-// that array is fill with p tags, map it. returns a new array of the same length.
-// the map should return new objects for each Element, 
-
-// loop through each of the p tags and, for eac onemptied, take the content, assign it to the content propery, push the content to objects, 
-
-// need a dataset id on the p tag to be refernced later
-// another Date.now is created when the card is created (to handle the entire card)
-
