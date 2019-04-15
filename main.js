@@ -153,22 +153,30 @@ function displayToDos(toDoInstance) {
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
-  displayTaskList(toDoInstance.task);
+  // displayTaskList(toDoInstance.task);
+  collectTaskList();
 }
 
-function displayTaskList(toDoInstance) {
+function collectTaskList(toDoInstance) {
+
+  // forEach(function(p, text) {
+  //   var x = (sidebarTaskList.getElementsByTagName("p"));
+  // })
+  // var x = (sidebarTaskList.getElementsByTagName("p"));
+  // console.log(x);
+
   
-  toDoInstance.forEach(function(task, index) {
-    var cardMiddle = el.closest(".todo__middle");
-    cardMiddle.insertAdjacentHTML('beforeend', `
-    <div class="todo__middle">
-				<img class="todo__middle-checkbox" src="images/checkbox.svg">
-				<p class="todo__middle-text">${task.text}</p>
-			</div>
-    `)
-  })
-  clearTitleInput();
-  clearTaskInput();
+  // .forEach(function(task, index) {
+  //   var cardMiddle = el.innerHTML(". p tag innertext ");
+  //   cardMiddle.insertAdjacentHTML('beforeend', `
+  //   <div class="todo__middle">
+	// 			<img class="todo__middle-checkbox" src="images/checkbox.svg">
+	// 			<p class="todo__middle-text">${task.text}</p>
+	// 		</div>
+  //   `)
+  // })
+  // clearTitleInput();
+  // clearTaskInput();
 }
 
 // Editing the To Do lists on the Fridge
