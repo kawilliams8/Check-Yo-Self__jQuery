@@ -11,14 +11,13 @@ listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
 
 var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
-var newTaskArray = [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
 titleInput.addEventListener('keyup', enableMakeListButton);
 itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
-makeListButton.addEventListener('click', instantiateToDo);
+makeListButton.addEventListener('click', addTaskToCollection);
 clearAllButton.addEventListener('click', clearSidebar);
 sidebarTaskList.addEventListener('click', deleteSidebarTasks);
 
@@ -34,7 +33,7 @@ function loadPage() {
 
 function reinstantiateToDos(toDoCollection) {
   var newToDoInstances = toDoCollection.map(function (data) {
-    var newData = new ToDo(data.id, data.title, data.task, data.urgent);
+    var newData = new ToDo(data.id, data.title, data.task, data.urgent, data.completed);
     return newData;
   })
   displaySavedToDos(newToDoInstances);
@@ -63,9 +62,8 @@ function displaySidebarTasks() {
     sidebarTaskList.innerHTML += `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
-		  <p class="task-item__text">${itemInput.value}</p>
+		  <p class="task-item__text" data-id=${Date.now()}>${itemInput.value}</p>
     </div>`;
-    addTaskToCollection(itemInput.value);
     clearTaskInput();
   }
 }
@@ -109,23 +107,22 @@ function showPrompt() {
 //Fridge card display, instantiation and update functions
 
 function addTaskToCollection(newTask) {
-  console.log(newTask);
-  // localStorage.setItem("newToDo", JSON.stringify(newTask));
-  var taskObj = {
-    text: itemInput.value,
-    id: Date.now()
+  var secondTaskArray = [];
+  var newTaskArray = document.querySelectorAll(".task-item__text");
+  for (i = 0; i < newTaskArray.length; i++) {
+    var taskObj = {
+      text: newTaskArray[i].innerText,
+      id: newTaskArray[i].dataset.id,
+      checked: false
+    }
+  secondTaskArray.push(taskObj);
   }
-  // localStorage.setItem("newToDo", JSON.stringify(taskObj));
-  newTaskArray.push(taskObj);
-  localStorage.setItem("newToDo", JSON.stringify(newTaskArray));
-  // instantiateToDo(newTaskArray);
+  instantiateToDo(secondTaskArray);
 }
 
-function instantiateToDo(newTaskArray) {
-  console.log("test")
-  var newTaskArray = JSON.parse(localStorage.getItem("newToDo"));
-  localStorage.setItem("newToDo", "");
-  var toDoInstance = new ToDo(Date.now(), titleInput.value, newTaskArray);
+function instantiateToDo(secondTaskArray) {
+  var toDoInstance = new ToDo(Date.now(), titleInput.value, secondTaskArray);
+  console.log(toDoInstance);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
   clearSidebar();
@@ -140,6 +137,7 @@ function displayToDos(toDoInstance) {
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
         <section class="todo__middle">
+        ${collectTaskList(toDoInstance)};
         </section>
         <section class="todo__bottom">
           <article class="card-bottom-left">
@@ -153,21 +151,20 @@ function displayToDos(toDoInstance) {
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
-  displayTaskList(toDoInstance.task);
+  // displayTaskList(toDoInstance.task);
+  // collectTaskList(toDoInstance, toDoCard);
 }
 
-function displayTaskList(toDoInstance) {
-  toDoInstance.forEach(function(task, index) {
-    var cardMiddle = el.closest(".todo__middle");
-    cardMiddle.insertAdjacentHTML('beforeend', `
+function collectTaskList(toDoInstance, toDoCard) {
+  var cardTasks = "";
+  toDoInstance.task.forEach(function (data) {
+   cardTasks += `
     <div class="todo__middle">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
-				<p class="todo__middle-text">${task.text}</p>
-			</div>
-    `)
+				<p class="todo__middle-text">${data.text}</p>
+		</div>`
   })
-  clearTitleInput();
-  clearTaskInput();
+  return cardTasks;
 }
 
 // Editing the To Do lists on the Fridge
