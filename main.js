@@ -9,15 +9,14 @@ clearAllButton = document.querySelector(".sidebar__form1-clear");
 filterButton = document.querySelector(".sidebar__form2-filter")
 listPrompt = document.querySelector(".todo__listprompt");
 fridge = document.querySelector(".fridge");
-var newTaskArray = [];
-
 
 var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
+var newTaskArray = [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
-titleInput.addEventListener('keyup', enableMakeListButton);
-itemInput.addEventListener('keyup', enableMakeListButton);
+// titleInput.addEventListener('keyup', enableMakeListButton);
+// itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', instantiateToDo);
 clearAllButton.addEventListener('click', clearSidebar);
@@ -26,47 +25,47 @@ sidebarTaskList.addEventListener('click', deleteSidebarTasks);
 //Page load and stored item reinstantiation functions
 
 function loadPage() {
-  makeListButton.disabled = true;
+  // makeListButton.disabled = true;
   clearAllButton.disabled = true;
   filterButton.disabled = true;
-  reinstantiateToDos();
+  reinstantiateToDos(toDoCollection);
+  // displayToDos(toDoCollection);
 }
 
-function reinstantiateToDos() {
-  var oldToDoCollection = toDoCollection;
-  var newToDoInstances = oldToDoCollection.map(function (data) {
-    data = new ToDo(data.id, data.title, data.task, data.urgent);
-    return data;
+function reinstantiateToDos(toDoCollection) {
+  var newToDoInstances = toDoCollection.map(function (data) {
+    var newData = new ToDo(data.id, data.title, data.task, data.urgent);
+    return newData;
   })
-  toDoCollection = newToDoInstances;
-  displaySavedToDos(toDoCollection);
+  displaySavedToDos(newToDoInstances);
 }
 
-function displaySavedToDos(toDoCollection) {
-  toDoCollection.forEach(function (data) {
+function displaySavedToDos(newToDoInstances) {
+  newToDoInstances.forEach(function (data) {
     displayToDos(data);
+    // displayTaskList(data)
   });
 }
 
 //Sidebar display, button handling, and input clearing functions
 
-function enableMakeListButton() {
-  if (titleInput.value !== "" && itemInput.value !== "") {
-    makeListButton.disabled = false;
-  }
-}
+// function enableMakeListButton() {
+//   if (titleInput.value !== "" && itemInput.value !== "") {
+//     makeListButton.disabled = false;
+//   }
+// }
 
-function displaySidebarTasks(e) {
+function displaySidebarTasks() {
   if (itemInput.value === "") {
     return;
   } else {
-    (e).preventDefault();
+    // (e).preventDefault();
     sidebarTaskList.innerHTML += `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text">${itemInput.value}</p>
     </div>`;
-    addTaskToCollection();
+    addTaskToCollection(itemInput.value);
     clearTaskInput();
   }
 }
@@ -83,12 +82,12 @@ function clearSidebar() {
 
 function clearTitleInput() {
   titleInput.value = "";
-  makeListButton.disabled = true;
+  // makeListButton.disabled = true;
 }
 
 function clearTaskInput() {
   itemInput.value = "";
-  makeListButton.disabled = true;
+  // makeListButton.disabled = true;
 }
 
 function clearSidebarList() {
@@ -109,16 +108,23 @@ function showPrompt() {
 
 //Fridge card display, instantiation and update functions
 
-function addTaskToCollection() {
+function addTaskToCollection(newTask) {
+  console.log(newTask);
+  // localStorage.setItem("newToDo", JSON.stringify(newTask));
   var taskObj = {
     text: itemInput.value,
     id: Date.now()
   }
+  // localStorage.setItem("newToDo", JSON.stringify(taskObj));
   newTaskArray.push(taskObj);
+  localStorage.setItem("newToDo", JSON.stringify(newTaskArray));
   // instantiateToDo(newTaskArray);
 }
 
 function instantiateToDo(newTaskArray) {
+  console.log("test")
+  var newTaskArray = JSON.parse(localStorage.getItem("newToDo"));
+  localStorage.setItem("newToDo", "");
   var toDoInstance = new ToDo(Date.now(), titleInput.value, newTaskArray);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
@@ -129,6 +135,7 @@ function instantiateToDo(newTaskArray) {
 
 function displayToDos(toDoInstance) {
   hidePrompt();
+  console.log('toDoInstance', toDoInstance);
   var toDoCard = `
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
@@ -146,13 +153,14 @@ function displayToDos(toDoInstance) {
         </section>
     </div>`;
   fridge.insertAdjacentHTML('beforeend', toDoCard);
-  displayTaskList(toDoInstance);
+  displayTaskList(toDoInstance.task);
 }
 
 function displayTaskList(toDoInstance) {
-  newTaskArray.forEach(function(task, index) {
-    console.log("task: " + task.text);
-    document.querySelector(".todo__middle").insertAdjacentHTML('beforeend', `
+  
+  toDoInstance.forEach(function(task, index) {
+    var cardMiddle = el.closest(".todo__middle");
+    cardMiddle.insertAdjacentHTML('beforeend', `
     <div class="todo__middle">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
 				<p class="todo__middle-text">${task.text}</p>

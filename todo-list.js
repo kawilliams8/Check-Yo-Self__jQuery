@@ -6,7 +6,8 @@ class ToDo {
         this.urgent = urgent || false;
     }
 
-    saveToStorage() {
+    saveToStorage(toDoCollection) {
+        console.log(toDoCollection);
         localStorage.setItem("savedTodos", JSON.stringify(toDoCollection));
     }
 
