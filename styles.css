@@ -1,6 +1,4 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
   background: #fff;
   display: grid;
   grid-template-areas: 
@@ -8,33 +6,35 @@ body {
     "sidebar fridge";
   grid-template-columns: 25% 75%;
   grid-template-rows: 60px 100%;
-  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
   height: 700px;
+  margin: 0px;
 }
 
 /* Begin of header styles */
 
 header {
-  grid-area: header;
-  grid-template-columns: 1fr 1fr;
+  align-self: center;
+  background: #1F1f3d;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  background: #1F1f3d;
+  grid-area: header;
+  grid-template-columns: 1fr 1fr;
   height: 60px;
+  justify-content: space-between;
   width: 100%;
-  align-self: center;
 }
 
 h1 {
-  grid-area: header;
-  font-size: 24px;
   color: #fff;
+  font-size: 24px;
   font-weight: 800;
+  grid-area: header;
+  letter-spacing: 1px;
   line-height: 60px;
   margin: 0px;
   padding-left: 10px;
-  letter-spacing: 1px;
 }
 
 h1 span {
@@ -42,42 +42,42 @@ h1 span {
 }
 
 .header__search {
-  display: inline-flex;
   align-self: center;
+  display: inline-flex;
   justify-self: flex-end;
 }
 
 .header__search-img {
+  background-color: #CAE5E3;
+  border-radius: 2px 0px 0px 2px;
   grid-area: header;
   height: 24px;
   padding: 9px;
-  background-color: #CAE5E3;
-  border-radius: 2px 0px 0px 2px;
 }
 
 .header__search-input {
-  grid-area: header;
-  height: 40px;
-  width: 270px;
-  padding-left: 10px;
-  font-size: 16px;
-  font-weight: 400;
-  margin-right: 12px;
   border-radius: 0px 2px 2px 0px;
   border: none;
   color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  grid-area: header;
+  height: 40px;
+  margin-right: 12px;
+  padding-left: 10px;
+  width: 270px;
 }
 
 /* Begin sidebar styles */
 
 .sidebar {
-  grid-area: sidebar;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
   background: #46869A;
   border-right: 2px solid #2C6780;
+  display: flex;
+  flex-direction: column;
+  grid-area: sidebar;
+  height: 100%;
+  justify-content: flex-start;
 }
 
 .sidebar__form1 {
@@ -87,80 +87,78 @@ h1 span {
 }
 
 .sidebar__form1-label {
+  color: #ffffff;
   font-size: 12px;
   font-weight: 400;
-  color: #ffffff;
 }
 
 .sidebar__form1-input {
-  width: 98%;
-  height: 38px;
-  border: 2px solid #1F1f3D;
   border-radius: 2px;
-  padding: 0;
+  border: 2px solid #1F1f3D;
   font-size: 16px;
+  height: 38px;
   padding-left: 5px;
+  padding: 0;
+  width: 98%;
 }
 
 .sidebar__form1-button {
-  width: 98%;
+  align-self: center;
   background: #1F1f3D;
+  border: none;
   color: #fff;
+  font-size: 16px;
+  font-size: 16px;
   font-weight: 700;
+  height: 38px;
   letter-spacing: .75px;
+  width: 98%;
 }
 
 .sidebar__tasklist-insert {
+  display: flex;
   list-style: none;
   padding: 10px 0 10px 0px;
-  display: flex;
 }
 
 .task-item__icon-delete {
-  margin-left: 7%;
-  height: 26px;
-  flex-flow: row;
   align-self: baseline;
+  flex-flow: row;
+  height: 26px;
+  margin-left: 7%;
 }
 
 .task-item__text {
+  align-self: center;
   color: #fff;
+  flex-flow: row;
   font-size: 18px;
   margin: 0px;
-  flex-flow: row;
-  align-self: center;
   padding-left: 5px;
 }
 
 .sidebar__form1-div {
-  display: inline-flex;
   align-self: center;
+  display: inline-flex;
   justify-self: flex-end;
   width: 100%;
 }
 
 #sidebar__form1-item-input {
-  width: 85%;
-  margin-right: 0px;
   border-radius: 2px 0px 0px 2px;
+  margin-right: 0px;
+  width: 85%;
 }
 
 .sidebar__form1-plus {
   align-self: center;
-  justify-content: flex-end;
-  height: 38px;
-  width: 15%;
-  padding: 7px;
   background-color: #1F1f3D;
   border-radius: 0px 2px 2px 0px;
-  margin: 7px 0% 7px 0;
-}
-
-.sidebar__form1-button {
   height: 38px;
-  width: 98%;
-  align-self: center;
-  border: none;
+  justify-content: flex-end;
+  margin: 7px 0% 7px 0;
+  padding: 7px;
+  width: 15%;
 }
 
 .sidebar__form1-clear {
@@ -172,18 +170,18 @@ h1 span {
 }
 
 .urgent {
-  width: 96%;
-  margin: 30px 2% 7px 2%;
   background-color: #FE2102;
   border: 2px solid #7A0F01;
+  margin: 30px 2% 7px 2%;
+  width: 96%;
 }
 
 /* Begin Fridge and Prompt styling */
 
 .fridge {
-  grid-area: fridge;
   background-color: #F4F7F8;
   column-width: 17rem;  
+  grid-area: fridge;
 }
 
 h2 {
@@ -205,13 +203,13 @@ h2 {
 
 
 .todo__card {
-  color: #1F1F3D;
-  margin: 20px;
-  width: 300px;
-  overflow-wrap: break-word;
   background-color: #FBFDFF;
   border: 2px solid #C7D3D8;
+  color: #1F1F3D;
   display: inline-block;
+  margin: 20px;
+  overflow-wrap: break-word;
+  width: 300px;
 }
 
 .todo__middle-display {
@@ -219,9 +217,9 @@ h2 {
 }
 
 .todo__card h2 {
+  border-bottom: 2px solid #C7D3D8;
   font-weight: 700;
   padding: 3px 10px;
-  border-bottom: 2px solid #C7D3D8;
 }
 
 .todo__middle-div {
@@ -231,46 +229,46 @@ h2 {
 }
 
 .todo__middle-checkbox {
-  margin-left: 7%;
-  height: 20px;
-  flex-flow: row;
   align-self: baseline;
+  flex-flow: row;
+  height: 20px;
+  margin-left: 7%;
   padding-top: 20px;
 }
 
 .todo__middle-text {
+  align-self: baseline;
+  flex-flow: row;
   font-size: 16px;
   line-height: 22px;
-  padding: 20px 12px;
   margin: 0px;
-  flex-flow: row;
-  align-self: baseline;
+  padding: 20px 12px;
 }
 
 .todo__bottom {
   border-top: 2px solid #C7D3D8;
-  height: 50px;
+  display: flex;
   display: flex;
   font-size: 9px;
-  padding-top: 2px;
-  display: flex;
+  height: 50px;
   justify-content: space-between;
+  padding-top: 2px;
 }
 
 .todo__bottom img {
   display: flex;
+  height: 23px;
+  justify-content: space-between;
   margin: 0px;
   padding: 5px 20px 0px 20px;
-  height: 23px;
   width: 23px;
-  justify-content: space-between;
 } 
 
 .todo__bottom p {
   color: #2C6780;
   font-weight: 700;
-  text-align: center;
   margin-top: 3px;
+  text-align: center;
 }
 
 .todo__card .urgent h2 {
@@ -291,22 +289,22 @@ and (max-device-width : 750px)
 and (orientation : portrait) { 
 
 body {
-  margin: 0px;
   display: block;
+  margin: 0px;
   width: 100%;
 }
 
 header {
-  width: 100%;
   height: 120px;
   line-height: 36px;
+  width: 100%;
 }
 
 h1 {
   font-size: 36px;
+  line-height: 36px;
   margin: auto;
   padding-top: 10px;
-  line-height: 36px;
 }
 
 .header__search {
@@ -315,8 +313,8 @@ h1 {
 }
 
 .fridge {
-  width: 100%;
   height: auto;
+  width: 100%;
 }
 
 .todo__card {
