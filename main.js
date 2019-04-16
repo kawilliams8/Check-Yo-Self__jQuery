@@ -49,7 +49,7 @@ function displaySavedToDos(newToDoInstances) {
 function enableMakeListButton() {
   console.log();
   
-  if (titleInput.value !== "") {
+  if (titleInput.value !== ""  ) {
     makeListButton.disabled = false;
   }
 }
@@ -133,7 +133,7 @@ function displayToDos(toDoInstance) {
   var toDoCard = `
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
-        <section class="todo__middle">
+        <section class="todo__middle-display">
         ${collectTaskList(toDoInstance)}
         </section>
         <section class="todo__bottom">
@@ -154,7 +154,7 @@ function collectTaskList(toDoInstance, toDoCard) {
   var cardTasks = "";
   toDoInstance.task.forEach(function (data) {
    cardTasks += `
-    <div class="todo__middle">
+    <div class="todo__middle-div">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
 				<p class="todo__middle-text">${data.text}</p>
 		</div>`
