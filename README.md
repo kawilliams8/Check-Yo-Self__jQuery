@@ -26,7 +26,7 @@ Mobile with user prompt:
 One mobile and two desktop comps were provided for students.
 
 Desktop version:
-![Desktop layout](ttps://github.com/kawilliams8/Check-Yo-Self/blob/master/desktop-prompt.png)
+![Desktop layout](https://github.com/kawilliams8/Check-Yo-Self/blob/master/comp-cards.png)
 
 Mobile version:
 ![Mobile layout](https://github.com/kawilliams8/Check-Yo-Self/blob/master/desktop-cards.png)
