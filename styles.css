@@ -194,7 +194,7 @@ h2 {
   display: grid;
   grid-area: fridge;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 21px;
 }
 
 .todo__listprompt.hidden {
