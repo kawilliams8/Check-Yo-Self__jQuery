@@ -10,9 +10,9 @@ class ToDo {
         localStorage.setItem("savedTodos", JSON.stringify(toDoCollection));
     }
 
-    deleteFromStorage(collectionIndex) {
+    deleteFromStorage(index) {
         console.log("hi");
-        toDoCollection.splice(collectionIndex, 1);
+        toDoCollection.splice(index, 1);
         this.saveToStorage();
     }
 

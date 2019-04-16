@@ -141,28 +141,13 @@ function showPrompt() {
   //this function needs to be called when card delete buttons are working
 }
 
-
-
 function deleteDisplayedCards(e) {
   if (e.target.className === "todo__bottom-delete") {
-    var card = e.target.closest('.todo__card');
-    card.remove();
-    var index = findCardIndex(card);
-    removeCardData(index);
-    if (document.querySelectorAll('.todo__card').length === 0) {
-      showPrompt();
-    }
+    e.target.closest('.todo__card').remove();
+    // var cardToDelete = new ToDo();
+    // var targetId = parseInt(e.target.closest('.todo__card').dataset.id);
+    // cardToDelete.deleteFromStorage(targetId);
+    showPrompt();
   }
 }
 
-function findCardIndex(card) {
-  var cardId = card.dataset.id;
-  return toDoCollection.findIndex(function (item) {
-    return item.id == cardId;
-  });
-}
-
-function removeCardData(index) {
-  var cardToDelete = toDoCollection[index];
-  cardToDelete.deleteFromStorage(index);
-}

@@ -191,12 +191,10 @@ h2 {
 }
 
 .todo__listprompt {
-  color: #2C6780;
   display: grid;
-  font-size: 48px;
   grid-area: fridge;
   justify-content: center;
-  margin-top: 21px;
+  margin-top: 32px;
 }
 
 .todo__listprompt.hidden {
@@ -243,7 +241,7 @@ h2 {
 .todo__middle-text {
   font-size: 16px;
   line-height: 22px;
-  padding: 0px 15px;
+  padding: 20px 12px;
   margin: 0px;
   flex-flow: row;
   align-self: baseline;
