@@ -29,7 +29,7 @@ Desktop version:
 ![Desktop layout](https://github.com/kawilliams8/Check-Yo-Self/blob/master/comp-cards.png)
 
 Mobile version:
-![Mobile layout](https://github.com/kawilliams8/Check-Yo-Self/blob/master/desktop-cards.png)
+![Mobile layout](https://github.com/kawilliams8/Check-Yo-Self/blob/master/comp-mobile.png)
 
 ## Site link
 [GitHub Pages project page](https://kawilliams8.github.io/Check-Yo-Self/)
