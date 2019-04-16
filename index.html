@@ -1,49 +1,49 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>CHECK YO' SELF</title>
-    <meta id="description" content="Check Yo' Self - A To Do List Application">
-    <meta name="author" content="Katherine A. Williams">
-    <meta name="keywords" content="HTML, CSS, Javascript">
+  <meta charset="utf-8">
+  <title>CHECK YO' SELF</title>
+  <meta id="description" content="Check Yo' Self - A To Do List Application">
+  <meta name="author" content="Katherine A. Williams">
+  <meta name="keywords" content="HTML, CSS, Javascript">
     <!-- <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css"> -->
-    <link rel="stylesheet" href="styles.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,
         400i,600,600i,700,700i,800,800i" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=3.0, minimum-scale=0.86">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=3.0, minimum-scale=0.86">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-    <body>
-        <header>
-            <h1 class="header">CHECK <span>YO&rsquo;</span> SELF</h1>
-            <div class="header__search">
-                <img class="header__search-img" src="images/search.svg" alt="search box">
-                <input class="header__search-input" type="text" placeholder="Search">
-            </div>
-        </header>
-        <main>
-            <aside class="sidebar">
-                <form class="sidebar__form1">
-                    <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-title-input">Task Title</label>
-                    <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-title-input" type="text">
-                    <div class="sidebar__tasklist"></div>
-                    <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-item">Task Item</label>
-                    <div class="sidebar__form1-div">
-                        <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-item-input" type="text">
-                        <img class="sidebar__form1 sidebar__form1-plus" src="images/plus.svg" alt="submit list item">
-                    </div>
-                    <button class="sidebar__form1 sidebar__form1-button sidebar__form1-make" type="button">Make Task List</button>
-                    <button class="sidebar__form1 sidebar__form1-button sidebar__form1-clear" type="button">Clear All</button>
-                </form>
-                <form class="sidebar__form2">
-                    <button class="sidebar__form2-filter sidebar__form1-button urgent" type="button">Filter by Urgency</button>
-                </form>
-            </aside>
-        </main>
-        <section class="fridge">
-            <img class="todo__listprompt" src="images/prompt.svg">
-        </section>
-    </body>
-    <script src="./todo-list.js"></script>
-    <script src="./main.js"></script>
+  <body>
+    <header>
+      <h1 class="header">CHECK <span>YO&rsquo;</span> SELF</h1>
+        <div class="header__search">
+          <img class="header__search-img" src="images/search.svg" alt="search box">
+          <input class="header__search-input" type="text" placeholder="Search">
+        </div>
+    </header>
+    <main>
+      <aside class="sidebar">
+        <form class="sidebar__form1">
+          <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-title-input">Task Title</label>
+          <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-title-input" type="text">
+          <div class="sidebar__tasklist"></div>
+          <label class="sidebar__form1 sidebar__form1-label" for="sidebar__form1-item">Task Item</label>
+          <div class="sidebar__form1-div">
+            <input class="sidebar__form1 sidebar__form1-input" id="sidebar__form1-item-input" type="text">
+            <img class="sidebar__form1 sidebar__form1-plus" src="images/plus.svg" alt="submit list item">
+          </div>
+          <button class="sidebar__form1 sidebar__form1-button sidebar__form1-make" type="button">Make Task List</button>
+          <button class="sidebar__form1 sidebar__form1-button sidebar__form1-clear" type="button">Clear All</button>
+        </form>
+        <form class="sidebar__form2">
+          <button class="sidebar__form2-filter sidebar__form1-button urgent" type="button">Filter by Urgency</button>
+        </form>
+      </aside>
+    </main>
+    <section class="fridge">
+      <img class="todo__listprompt" src="images/prompt.svg">
+    </section>
+  </body>
+<script src="./todo-list.js"></script>
+<script src="./main.js"></script>
 </html>

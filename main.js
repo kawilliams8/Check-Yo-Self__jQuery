@@ -142,6 +142,7 @@ function showPrompt() {
 }
 
 function deleteDisplayedCards(e) {
+  //Delete from DOM working, delete from storage method not working
   if (e.target.className === "todo__bottom-delete") {
     e.target.closest('.todo__card').remove();
     // var cardToDelete = new ToDo();
