@@ -11,7 +11,8 @@ class ToDo {
     }
 
     deleteFromStorage(collectionIndex) {
-        //toDoCollection.splice(collectionIndex, 1);
+        console.log("hi");
+        toDoCollection.splice(collectionIndex, 1);
         this.saveToStorage();
     }
 
