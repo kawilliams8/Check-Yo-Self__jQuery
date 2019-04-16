@@ -28,7 +28,6 @@ function loadPage() {
   clearAllButton.disabled = true;
   filterButton.disabled = true;
   reinstantiateToDos(toDoCollection);
-  // displayToDos(toDoCollection);
 }
 
 function reinstantiateToDos(toDoCollection) {
@@ -42,14 +41,15 @@ function reinstantiateToDos(toDoCollection) {
 function displaySavedToDos(newToDoInstances) {
   newToDoInstances.forEach(function (data) {
     displayToDos(data);
-    // displayTaskList(data)
   });
 }
 
 //Sidebar display, button handling, and input clearing functions
 
 function enableMakeListButton() {
-  if (titleInput.value !== "" && sidebarTaskList.length === 0) {
+  console.log();
+  
+  if (titleInput.value !== "") {
     makeListButton.disabled = false;
   }
 }
@@ -58,7 +58,6 @@ function displaySidebarTasks() {
   if (itemInput.value === "") {
     return;
   } else {
-    // (e).preventDefault();
     sidebarTaskList.innerHTML += `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
@@ -122,7 +121,6 @@ function addTaskToCollection(newTask) {
 
 function instantiateToDo(secondTaskArray) {
   var toDoInstance = new ToDo(Date.now(), titleInput.value, secondTaskArray);
-  console.log(toDoInstance);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
   clearSidebar();
@@ -132,12 +130,11 @@ function instantiateToDo(secondTaskArray) {
 
 function displayToDos(toDoInstance) {
   hidePrompt();
-  console.log('toDoInstance', toDoInstance);
   var toDoCard = `
     <div class="todo__card todo__card-regular" data-id=${toDoInstance.id}>
         <h2 class="todo__top">${toDoInstance.title}</h2>
         <section class="todo__middle">
-        ${collectTaskList(toDoInstance)};
+        ${collectTaskList(toDoInstance)}
         </section>
         <section class="todo__bottom">
           <article class="card-bottom-left">
@@ -150,9 +147,7 @@ function displayToDos(toDoInstance) {
           </article>
         </section>
     </div>`;
-  fridge.insertAdjacentHTML('beforeend', toDoCard);
-  // displayTaskList(toDoInstance.task);
-  // collectTaskList(toDoInstance, toDoCard);
+  fridge.insertAdjacentHTML('afterbegin', toDoCard);
 }
 
 function collectTaskList(toDoInstance, toDoCard) {
@@ -166,5 +161,3 @@ function collectTaskList(toDoInstance, toDoCard) {
   })
   return cardTasks;
 }
-
-// Editing the To Do lists on the Fridge

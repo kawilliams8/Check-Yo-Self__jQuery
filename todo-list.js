@@ -7,7 +7,6 @@ class ToDo {
     }
 
     saveToStorage(toDoCollection) {
-        console.log(toDoCollection);
         localStorage.setItem("savedTodos", JSON.stringify(toDoCollection));
     }
 
