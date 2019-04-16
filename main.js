@@ -18,8 +18,7 @@ sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', addTaskToCollection);
 clearAllButton.addEventListener('click', clearSidebar);
 sidebarTaskList.addEventListener('click', deleteSidebarTasks);
-
-//Page load and stored item reinstantiation functions
+fridge.addEventListener('click', deleteDisplayedCards);
 
 function loadPage() {
   makeListButton.disabled = true;
@@ -40,78 +39,6 @@ function displaySavedToDos(newToDoInstances) {
   newToDoInstances.forEach(function (data) {
     displayToDos(data);
   });
-}
-
-//Sidebar display, button handling, and input clearing functions
-
-function displaySidebarTasks() {
-  console.log('else');
-  sidebarTaskList.innerHTML += `
-	  <div class="sidebar__tasklist-insert">
-		  <img class="task-item__icon-delete" src="images/delete.svg">
-		  <p class="task-item__text" data-id=${Date.now()}>${itemInput.value}</p>
-    </div>`;
-  clearTaskInput();
-  makeListButton.disabled = false;
-  clearAllButton.disabled = false;
-}
-
-function deleteSidebarTasks(e) {
-  e.target.closest("div").remove();
-}
-
-function clearSidebar() {
-  clearTitleInput();
-  clearTaskInput();
-  clearSidebarList();
-}
-
-function clearTitleInput() {
-  titleInput.value = "";
-}
-
-function clearTaskInput() {
-  itemInput.value = "";
-}
-
-function clearSidebarList() {
-  sidebarTaskList.parentNode.removeChild(sidebarListItems);
-}
-
-//Fridge prompt hide/show functions
-
-function hidePrompt() {
-  if (toDoCollection.length > 0) {
-    listPrompt.classList.add("hidden");
-  }
-}
-
-function showPrompt() {
-  listPrompt.classList.remove("hidden");
-}
-
-//Fridge card display, instantiation and update functions
-
-function addTaskToCollection(newTask) {
-  var secondTaskArray = [];
-  var newTaskArray = document.querySelectorAll(".task-item__text");
-  for (i = 0; i < newTaskArray.length; i++) {
-    var taskObj = {
-      text: newTaskArray[i].innerText,
-      id: newTaskArray[i].dataset.id,
-      checked: false
-    }
-    secondTaskArray.push(taskObj);
-  }
-  instantiateToDo(secondTaskArray);
-}
-
-function instantiateToDo(secondTaskArray) {
-  var toDoInstance = new ToDo(Date.now(), titleInput.value, secondTaskArray);
-  toDoCollection.push(toDoInstance);
-  toDoInstance.saveToStorage(toDoCollection);
-  displayToDos(toDoInstance);
-  clearAllButton.disabled = false;
 }
 
 function displayToDos(toDoInstance) {
@@ -146,4 +73,96 @@ function collectTaskList(toDoInstance, toDoCard) {
 		</div>`
   })
   return cardTasks;
+}
+
+function displaySidebarTasks() {
+  sidebarTaskList.innerHTML += `
+	  <div class="sidebar__tasklist-insert">
+		  <img class="task-item__icon-delete" src="images/delete.svg">
+		  <p class="task-item__text" data-id=${Date.now()}>${itemInput.value}</p>
+    </div>`;
+  clearTaskInput();
+  makeListButton.disabled = false;
+  clearAllButton.disabled = false;
+}
+
+function addTaskToCollection(newTask) {
+  var secondTaskArray = [];
+  var newTaskArray = document.querySelectorAll(".task-item__text");
+  for (i = 0; i < newTaskArray.length; i++) {
+    var taskObj = {
+      text: newTaskArray[i].innerText,
+      id: newTaskArray[i].dataset.id,
+      checked: false
+    }
+    secondTaskArray.push(taskObj);
+  }
+  instantiateToDo(secondTaskArray);
+}
+
+function instantiateToDo(secondTaskArray) {
+  var toDoInstance = new ToDo(Date.now(), titleInput.value, secondTaskArray);
+  toDoCollection.push(toDoInstance);
+  toDoInstance.saveToStorage(toDoCollection);
+  displayToDos(toDoInstance);
+  makeListButton.disabled = true;
+}
+
+function clearSidebar() {
+  clearTitleInput();
+  clearSidebarList();
+}
+
+function clearTitleInput() {
+  titleInput.value = "";
+  clearAllButton.disabled = true;
+}
+
+function clearTaskInput() {
+  itemInput.value = "";
+}
+
+function clearSidebarList() {
+  sidebarTaskList.innerHTML = "";
+}
+
+function deleteSidebarTasks(e) {
+  e.target.closest("div").remove();
+}
+
+function hidePrompt() {
+  if (toDoCollection.length > 0) {
+    listPrompt.classList.add("hidden");
+  }
+}
+
+function showPrompt() {
+  listPrompt.classList.remove("hidden");
+  //this function needs to be called when card delete buttons are working
+}
+
+
+
+function deleteDisplayedCards(e) {
+  if (e.target.className === "todo__bottom-delete") {
+    var card = e.target.closest('.todo__card');
+    card.remove();
+    var index = findCardIndex(card);
+    removeCardData(index);
+    if (document.querySelectorAll('.todo__card').length === 0) {
+      showPrompt();
+    }
+  }
+}
+
+function findCardIndex(card) {
+  var cardId = card.dataset.id;
+  return toDoCollection.findIndex(function (item) {
+    return item.id == cardId;
+  });
+}
+
+function removeCardData(index) {
+  var cardToDelete = toDoCollection[index];
+  cardToDelete.deleteFromStorage(index);
 }
