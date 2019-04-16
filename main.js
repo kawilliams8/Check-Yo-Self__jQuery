@@ -1,7 +1,7 @@
 //Global variables
 titleInput = document.querySelector("#sidebar__form1-title-input");
 sidebarTaskList = document.querySelector(".sidebar__tasklist")
-sidebarListItems = document.querySelector("sidebar__tasklist-item");
+sidebarListItems = document.querySelector(".sidebar__tasklist-insert");
 itemInput = document.querySelector("#sidebar__form1-item-input");
 sidebarTaskAdd = document.querySelector(".sidebar__form1-plus");
 makeListButton = document.querySelector(".sidebar__form1-make");
@@ -14,8 +14,6 @@ var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
 
 //Event Listeners
 window.addEventListener('load', loadPage);
-titleInput.addEventListener('keyup', enableMakeListButton);
-itemInput.addEventListener('keyup', enableMakeListButton);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', addTaskToCollection);
 clearAllButton.addEventListener('click', clearSidebar);
@@ -46,25 +44,16 @@ function displaySavedToDos(newToDoInstances) {
 
 //Sidebar display, button handling, and input clearing functions
 
-function enableMakeListButton() {
-  console.log();
-  
-  if (titleInput.value !== ""  ) {
-    makeListButton.disabled = false;
-  }
-}
-
 function displaySidebarTasks() {
-  if (itemInput.value === "") {
-    return;
-  } else {
-    sidebarTaskList.innerHTML += `
+  console.log('else');
+  sidebarTaskList.innerHTML += `
 	  <div class="sidebar__tasklist-insert">
 		  <img class="task-item__icon-delete" src="images/delete.svg">
 		  <p class="task-item__text" data-id=${Date.now()}>${itemInput.value}</p>
     </div>`;
-    clearTaskInput();
-  }
+  clearTaskInput();
+  makeListButton.disabled = false;
+  clearAllButton.disabled = false;
 }
 
 function deleteSidebarTasks(e) {
@@ -79,16 +68,14 @@ function clearSidebar() {
 
 function clearTitleInput() {
   titleInput.value = "";
-  // makeListButton.disabled = true;
 }
 
 function clearTaskInput() {
   itemInput.value = "";
-  // makeListButton.disabled = true;
 }
 
 function clearSidebarList() {
-  sidebarTaskList.parentNode.removeChild(sidebarTaskList);
+  sidebarTaskList.parentNode.removeChild(sidebarListItems);
 }
 
 //Fridge prompt hide/show functions
@@ -114,7 +101,7 @@ function addTaskToCollection(newTask) {
       id: newTaskArray[i].dataset.id,
       checked: false
     }
-  secondTaskArray.push(taskObj);
+    secondTaskArray.push(taskObj);
   }
   instantiateToDo(secondTaskArray);
 }
@@ -123,7 +110,6 @@ function instantiateToDo(secondTaskArray) {
   var toDoInstance = new ToDo(Date.now(), titleInput.value, secondTaskArray);
   toDoCollection.push(toDoInstance);
   toDoInstance.saveToStorage(toDoCollection);
-  clearSidebar();
   displayToDos(toDoInstance);
   clearAllButton.disabled = false;
 }
@@ -153,7 +139,7 @@ function displayToDos(toDoInstance) {
 function collectTaskList(toDoInstance, toDoCard) {
   var cardTasks = "";
   toDoInstance.task.forEach(function (data) {
-   cardTasks += `
+    cardTasks += `
     <div class="todo__middle-div">
 				<img class="todo__middle-checkbox" src="images/checkbox.svg">
 				<p class="todo__middle-text">${data.text}</p>
