@@ -32,6 +32,7 @@ function reinstantiateToDos(toDoCollection) {
     var newData = new ToDo(data.id, data.title, data.task, data.urgent, data.completed);
     return newData;
   })
+
   displaySavedToDos(newToDoInstances);
 }
 
@@ -72,6 +73,7 @@ function collectTaskList(toDoInstance, toDoCard) {
 				<p class="todo__middle-text">${data.text}</p>
 		</div>`
   })
+
   return cardTasks;
 }
 
@@ -95,8 +97,10 @@ function addTaskToCollection(newTask) {
       id: newTaskArray[i].dataset.id,
       checked: false
     }
+
     secondTaskArray.push(taskObj);
   }
+  
   instantiateToDo(secondTaskArray);
 }
 
