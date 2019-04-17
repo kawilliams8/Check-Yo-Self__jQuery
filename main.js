@@ -1,4 +1,3 @@
-//Global variables
 titleInput = document.querySelector("#sidebar__form1-title-input");
 sidebarTaskList = document.querySelector(".sidebar__tasklist")
 sidebarListItems = document.querySelector(".sidebar__tasklist-insert");
@@ -12,7 +11,6 @@ fridge = document.querySelector(".fridge");
 
 var toDoCollection = JSON.parse(localStorage.getItem("savedTodos")) || [];
 
-//Event Listeners
 window.addEventListener('load', loadPage);
 sidebarTaskAdd.addEventListener('click', displaySidebarTasks);
 makeListButton.addEventListener('click', addTaskToCollection);
@@ -138,17 +136,20 @@ function hidePrompt() {
 
 function showPrompt() {
   listPrompt.classList.remove("hidden");
-  //this function needs to be called when card delete buttons are working
 }
 
 function deleteDisplayedCards(e) {
   //Delete from DOM working, delete from storage method not working
   if (e.target.className === "todo__bottom-delete") {
     e.target.closest('.todo__card').remove();
-    // var cardToDelete = new ToDo();
-    // var targetId = parseInt(e.target.closest('.todo__card').dataset.id);
-    // cardToDelete.deleteFromStorage(targetId);
+    var targetId = parseInt(e.target.closest('.todo__card').dataset.id);
+    let foundObj = toDoCollection.find(function (foundObj) {
+      console.log(foundObj.id);
+      console.log(targetId);
+      foundObj.id === targetId
+      foundObj.deleteFromStorage();
+    })
+    
     showPrompt();
   }
 }
-
