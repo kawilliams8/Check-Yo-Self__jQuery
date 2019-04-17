@@ -12,14 +12,14 @@ class ToDo {
 
   deleteFromStorage(index) {
     toDoCollection.splice(index, 1);
-      this.saveToStorage();
+     this.saveToStorage();
   }
 
   updateToDo() {
     // this.urgent = !this.urgent;
     this.saveToStorage();
   }
- 
+
   updateTask(editedTitle, completed) {
     //this.completed = completed || false;
     //this.title = editedTitle;
