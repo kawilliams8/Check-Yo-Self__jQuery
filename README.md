@@ -1,5 +1,5 @@
-# Check Yo' Self
-Check Yo' Self, refactored - Turing Mod 1 FEE final project
+# Check Yo' Self, refactored
+Check Yo' Self - Turing Mod 1 FEE final project
 
 Check Yo' Self is the final project in Mod 1 of the Front End Engineering program at the Turing School of Software and Design. The author is a student in the 1903 Cohort.
 
